@@ -466,6 +466,142 @@
       </aside>
 
     </div>
+
+    <!-- SECTION: INFO PELUANG EKSTERNAL & PROPOSAL SAYA (STATIS - NANTI DINAMIS) -->
+    <section class="dashboard-bottom-section">
+      
+      <!-- CARD 1: INFO PELUANG EKSTERNAL -->
+      <div class="bottom-card">
+        <h3 class="bottom-card-title">Info peluang eksternal</h3>
+        <p class="bottom-card-desc">
+          BIMA, RisetMu, maupun hibah dari kementerian/lembaga lain yang diumumkan LPPM &mdash; tidak ada integrasi data dengan platform manapun di sini, hanya pengumuman yang diteruskan. Pendaftaran &amp; seluruh prosesnya dilakukan langsung di portal masing-masing.
+        </p>
+        <div class="bottom-table-wrapper">
+          <table class="bottom-table">
+            <thead>
+              <tr>
+                <th style="width: 42%;">NAMA SKEMA</th>
+                <th style="width: 20%;">SUMBER</th>
+                <th style="width: 20%;">TENGGAT</th>
+                <th style="width: 18%; text-align: right;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>RisetMu Batch X</strong></td>
+                <td><span class="source-tag tag-risetmu">RISETMU</span></td>
+                <td>15 Okt 2026</td>
+                <td style="text-align: right;">
+                  <a href="https://risetmu.or.id" target="_blank" rel="noopener noreferrer" class="btn-pill-action">
+                    Buka portal &nearr;
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Hibah Penelitian Fundamental</strong></td>
+                <td><span class="source-tag tag-bima">BIMA</span></td>
+                <td>5 Nov 2026</td>
+                <td style="text-align: right;">
+                  <a href="https://bima.kemdikbud.go.id" target="_blank" rel="noopener noreferrer" class="btn-pill-action">
+                    Buka portal &nearr;
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Hibah Riset Keagamaan &mdash; Litapdimas</strong></td>
+                <td><span class="source-tag tag-kemenag">KEMENAG</span></td>
+                <td>30 Nov 2026</td>
+                <td style="text-align: right;">
+                  <a href="https://litapdimas.kemenag.go.id" target="_blank" rel="noopener noreferrer" class="btn-pill-action">
+                    Buka portal &nearr;
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Riset Inovatif Produktif (RISPRO)</strong></td>
+                <td><span class="source-tag tag-brin">BRIN/LPDP</span></td>
+                <td>10 Des 2026</td>
+                <td style="text-align: right;">
+                  <a href="https://pendanaan-risnov.brin.go.id" target="_blank" rel="noopener noreferrer" class="btn-pill-action">
+                    Buka portal &nearr;
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CARD 2: PROPOSAL SAYA -->
+      <div class="bottom-card">
+        <h3 class="bottom-card-title">Proposal saya</h3>
+        <div class="bottom-table-wrapper" style="margin-top: 14px;">
+          <table class="bottom-table">
+            <thead>
+              <tr>
+                <th style="width: 32%;">JUDUL</th>
+                <th style="width: 25%;">SKEMA</th>
+                <th style="width: 15%;">STATUS</th>
+                <th style="width: 15%;">PROGRESS</th>
+                <th style="width: 13%; text-align: right;"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Model digitalisasi UMKM berbasis AI</strong></td>
+                <td>Penelitian Terapan</td>
+                <td><span class="status-badge-pill status-badge-review">Direview</span></td>
+                <td>
+                  <div class="progress-cell">
+                    <div class="progress-track">
+                      <div class="progress-fill" style="width: 40%;"></div>
+                    </div>
+                    <span class="progress-text">40%</span>
+                  </div>
+                </td>
+                <td style="text-align: right;">
+                  <button type="button" class="btn-pill-action" onclick="openProposalDetailModal(101)">Lihat detail</button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Literasi digital untuk desa binaan</strong></td>
+                <td>Pengabdian Persyarikatan</td>
+                <td><span class="status-badge-pill status-badge-approved">Disetujui</span></td>
+                <td>
+                  <div class="progress-cell">
+                    <div class="progress-track">
+                      <div class="progress-fill" style="width: 70%;"></div>
+                    </div>
+                    <span class="progress-text">70%</span>
+                  </div>
+                </td>
+                <td style="text-align: right;">
+                  <button type="button" class="btn-pill-action" onclick="showToast('Membuka form pengisian logbook kegiatan...')">Isi logbook</button>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Model prediksi kelulusan mahasiswa</strong></td>
+                <td>&mdash;</td>
+                <td><span class="status-badge-pill status-badge-draft">Draft</span></td>
+                <td>
+                  <div class="progress-cell">
+                    <div class="progress-track">
+                      <div class="progress-fill" style="width: 10%;"></div>
+                    </div>
+                    <span class="progress-text">10%</span>
+                  </div>
+                </td>
+                <td style="text-align: right;">
+                  <a href="usulan-baru.html" class="btn-pill-action">Lanjutkan</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
   </main>
 
   <!-- FOOTER -->

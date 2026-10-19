@@ -1483,3 +1483,180 @@ body {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   DASHBOARD BOTTOM SECTION: PELUANG EKSTERNAL & PROPOSAL SAYA
+   ========================================================================== */
+.dashboard-bottom-section {
+  max-width: 1400px;
+  margin: 24px auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bottom-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow-sm);
+}
+
+.bottom-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+}
+
+.bottom-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.bottom-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.bottom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.82rem;
+}
+
+.bottom-table th {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  text-transform: uppercase;
+}
+
+.bottom-table td {
+  padding: 14px;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.bottom-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Source Badges */
+.source-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+.tag-risetmu {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.tag-bima {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.tag-kemenag {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.tag-brin {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+/* Status Badges */
+.status-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.status-badge-review {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-badge-approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge-draft {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+/* Progress bar */
+.progress-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-track {
+  width: 90px;
+  height: 8px;
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #1e3a8a;
+  border-radius: 9999px;
+}
+
+.progress-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #334155;
+  min-width: 32px;
+}
+
+/* Pill Action Buttons */
+.btn-pill-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  border: 1.5px solid #0284c7;
+  color: #0284c7;
+  background: transparent;
+  padding: 6px 18px;
+  border-radius: 9999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-pill-action:hover {
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+
