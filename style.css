@@ -542,7 +542,8 @@ body {
 }
 
 .hero-card {
-  background: linear-gradient(135deg, #1f2a63 0%, #151d45 100%);
+  background: linear-gradient(90deg, rgba(17, 24, 60, 0.92) 0%, rgba(25, 35, 85, 0.80) 45%, rgba(15, 23, 62, 0.55) 100%),
+              url('assets/hero_bg.webp') center right / cover no-repeat;
   border-radius: 16px;
   padding: 30px 32px;
   display: flex;
