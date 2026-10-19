@@ -141,14 +141,14 @@
           </a>
         </li>
         <li class="nav-item has-dropdown">
-          <a href="#" class="nav-link">
+          <a href="penelitian.html" class="nav-link">
             <i class="fa-solid fa-flask"></i>
             <span>Penelitian</span>
             <i class="fa-solid fa-chevron-down sub-arrow"></i>
           </a>
           <ul class="sub-dropdown">
-            <li><a href="#" onclick="showToast('Menu Usulan Baru Penelitian')">Usulan Baru</a></li>
-            <li><a href="#" onclick="showToast('Menu Riwayat Penelitian')">Riwayat Usulan Penelitian</a></li>
+            <li><a href="usulan-baru.html">Usulan Baru</a></li>
+            <li><a href="penelitian.html">Riwayat Usulan Penelitian</a></li>
             <li><a href="#" onclick="showToast('Menu Laporan Kemajuan')">Laporan Kemajuan</a></li>
             <li><a href="#" onclick="showToast('Menu Laporan Akhir')">Laporan Akhir</a></li>
           </ul>
@@ -400,9 +400,9 @@
             <div class="history-section">
               <div class="section-title-bar">
                 <h4 class="history-sec-heading">Penelitian</h4>
-                <a href="#" class="more-link" onclick="showToast('Menampilkan semua riwayat penelitian')">more..</a>
+                <a href="penelitian.html" class="more-link" title="Buka seluruh daftar penelitian">more..</a>
               </div>
-              <ul class="history-list">
+              <ul class="history-list" id="penelitianHistoryList">
                 <li class="empty-item">
                   <span class="bullet-circle"></span>
                   <span>Belum ada penelitian yang didanai.</span>
@@ -560,10 +560,76 @@
     </div>
   </div>
 
+  <!-- USULAN PENELITIAN BARU MODAL (Modul Arya) -->
+  <div class="modal-overlay" id="usulanPenelitianModal" onclick="handleBackdropClick(event, 'usulanPenelitianModal')">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-header-title">
+          <i class="fa-solid fa-flask" style="color: #ff3b68;"></i>
+          <h3>Formulir Usulan Baru Penelitian Dosen</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeUsulanPenelitianModal()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="formUsulanPenelitian" onsubmit="submitUsulanPenelitian(event)">
+          <div class="form-group">
+            <label>Judul Penelitian <span style="color: #ef4444;">*</span></label>
+            <input type="text" class="form-input" id="usulanJudul" placeholder="Contoh: Penerapan Machine Learning untuk..." required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Skema Penelitian</label>
+              <select class="form-input" id="usulanSkema">
+                <option value="Penelitian Dosen Pemula (PDP)" selected>Penelitian Dosen Pemula (PDP)</option>
+                <option value="Penelitian Terapan Unggulan (PTU)">Penelitian Terapan Unggulan (PTU)</option>
+                <option value="Penelitian Fundamental RisetMu">Penelitian Fundamental RisetMu</option>
+                <option value="Penelitian Kolaborasi Antar Perguruan Tinggi">Kolaborasi Antar PT</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Target Luaran</label>
+              <select class="form-input" id="usulanLuaran">
+                <option value="Jurnal Nasional Terakreditasi (SINTA 1-2)">Jurnal Nasional Sinta 1-2</option>
+                <option value="Jurnal Internasional Bereputasi (Scopus/WoS)" selected>Jurnal Internasional Bereputasi (Scopus)</option>
+                <option value="Prosiding Internasional Terindeks">Prosiding Internasional</option>
+                <option value="Hak Kekayaan Intelektual (Paten/Hak Cipta)">Paten / Hak Cipta</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Usulan Dana (Rp) <span style="color: #ef4444;">*</span></label>
+              <input type="number" class="form-input" id="usulanDana" value="25000000" min="5000000" step="500000" required>
+            </div>
+            <div class="form-group">
+              <label>Tahun Anggaran</label>
+              <input type="text" class="form-input" value="2026/2027" readonly style="background-color: #f8fafc;">
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Anggota Peneliti (Dosen / Mahasiswa)</label>
+            <textarea class="form-input" id="usulanAnggota" rows="2" placeholder="1. Nama Anggota 1 (NIDN)&#10;2. Nama Mahasiswa (NIM)"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Mitra Sasaran / Lokasi Penelitian</label>
+            <input type="text" class="form-input" id="usulanMitra" placeholder="Contoh: UMKM Kota Medan / Lab Komputasi">
+          </div>
+          <div class="modal-actions-right">
+            <button type="button" class="btn btn-secondary" onclick="closeUsulanPenelitianModal()">Batal</button>
+            <button type="submit" class="btn btn-primary" style="background-color: #ff3b68; border-color: #ff3b68;">
+              <i class="fa-solid fa-paper-plane"></i> Ajukan Proposal
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div class="toast-container" id="toastContainer"></div>
 
-  <!-- App Script -->
+  <!-- App Scripts -->
   <script src="app.js"></script>
+  <script src="modules/penelitian.js"></script>
 </body>
 </html>
