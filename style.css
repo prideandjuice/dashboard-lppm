@@ -423,12 +423,15 @@ body {
   background-color: var(--primary-navy);
   color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1000; /* Pastikan selalu berada di atas hero-card dan elemen konten */
 }
 
 .sub-nav-container {
   max-width: 1400px;
   margin: 0 auto;
   padding: 0 24px;
+  position: relative;
 }
 
 .nav-links {
@@ -436,12 +439,7 @@ body {
   display: flex;
   align-items: center;
   gap: 6px;
-  overflow-x: auto;
-  scrollbar-width: none;
-}
-
-.nav-links::-webkit-scrollbar {
-  display: none;
+  overflow: visible; /* KUNCI: Jangan gunakan overflow-x auto agar dropdown tidak terpotong vertikal */
 }
 
 .nav-item {
@@ -478,6 +476,12 @@ body {
   font-size: 9px;
   opacity: 0.75;
   margin-left: 2px;
+  transition: transform 0.2s ease;
+}
+
+.nav-item.has-dropdown:hover .sub-arrow,
+.nav-item.has-dropdown.show .sub-arrow {
+  transform: rotate(180deg);
 }
 
 /* Sub-nav Dropdowns */
@@ -486,21 +490,23 @@ body {
   top: 100%;
   left: 0;
   background: #ffffff;
-  border-radius: 8px;
-  box-shadow: var(--shadow-lg);
-  min-width: 210px;
+  border-radius: 10px;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22), 0 4px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  min-width: 220px;
   list-style: none;
-  padding: 6px 0;
+  padding: 8px 0;
   display: none;
-  z-index: 999;
+  z-index: 9999;
 }
 
 .sub-dropdown li a {
   display: block;
-  padding: 9px 18px;
+  padding: 10px 18px;
   font-size: 13px;
   color: #334155;
   text-decoration: none;
+  font-weight: 500;
   transition: background var(--transition-fast), color var(--transition-fast);
 }
 
@@ -509,7 +515,8 @@ body {
   color: var(--primary-navy);
 }
 
-.nav-item.has-dropdown:hover .sub-dropdown {
+.nav-item.has-dropdown:hover .sub-dropdown,
+.nav-item.has-dropdown.show .sub-dropdown {
   display: block;
   animation: fadeInDown 0.18s ease-out;
 }
@@ -542,7 +549,8 @@ body {
 }
 
 .hero-card {
-  background: linear-gradient(135deg, #1f2a63 0%, #151d45 100%);
+  background: linear-gradient(90deg, rgba(17, 24, 60, 0.92) 0%, rgba(25, 35, 85, 0.80) 45%, rgba(15, 23, 62, 0.55) 100%),
+              url('assets/hero_bg.webp') center right / cover no-repeat;
   border-radius: 16px;
   padding: 30px 32px;
   display: flex;
@@ -630,14 +638,16 @@ body {
 
 /* Hero Avatar Area & Sparkles */
 .hero-avatar-area {
-  position: relative;
-  width: 220px;
-  height: 260px;
+  position: absolute;
+  right: 15px;
+  bottom: 0;
+  width: 250px;
+  height: 270px;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
   z-index: 2;
-  flex-shrink: 0;
+  pointer-events: none;
 }
 
 .avatar-image-wrapper {
@@ -646,22 +656,24 @@ body {
   position: relative;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .hero-3d-character {
   width: auto;
   height: 100%;
-  max-height: 260px;
+  max-height: 270px;
   object-fit: contain;
-  object-position: bottom center;
+  object-position: bottom right;
   filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.45)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   user-select: none;
+  display: block;
+  vertical-align: bottom;
 }
 
 .hero-card:hover .hero-3d-character {
-  transform: scale(1.05) translateY(-4px);
+  transform: scale(1.03) translateY(-2px);
 }
 
 /* Floating Sparkle Stars */
@@ -1483,3 +1495,375 @@ body {
     justify-content: center;
   }
 }
+
+/* ==========================================================================
+   SIDEBAR PANEL CARDS (SESUAI FOLDER ARYA: RIWAYAT USULAN & PENGUMUMAN)
+   ========================================================================== */
+.sidebar-panel-card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+.panel-navy-header {
+  background: var(--primary-navy);
+  color: #ffffff;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-navy-header h3 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.panel-header-link {
+  color: #93c5fd;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: opacity 0.15s ease;
+}
+
+.panel-header-link:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.history-cards-list {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.history-item-row:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.item-badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+.item-badge-icon.blue { background: #dbeafe; color: #1e40af; }
+.item-badge-icon.green { background: #dcfce7; color: #166534; }
+.item-badge-icon.pink { background: #fce7f3; color: #9d174d; }
+
+.history-item-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.history-item-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.35;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.history-item-scheme {
+  font-size: 0.7rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge-status-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-status-pill.review { background: #fef3c7; color: #b45309; }
+.badge-status-pill.funded { background: #dcfce7; color: #15803d; }
+.badge-status-pill.done { background: #e0f2fe; color: #0369a1; }
+
+.announcement-list {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.announcement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.announcement-item:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.announcement-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #e0f2fe;
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.announcement-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.announcement-date {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   DASHBOARD BOTTOM SECTION: PELUANG EKSTERNAL & PROPOSAL SAYA (SIDE-BY-SIDE)
+   ========================================================================== */
+.dashboard-bottom-section {
+  max-width: 1400px;
+  margin: 24px auto 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+@media (max-width: 1080px) {
+  .dashboard-bottom-section {
+    grid-template-columns: 1fr;
+  }
+}
+
+.bottom-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-card-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #1e3a8a;
+  margin-bottom: 6px;
+}
+
+.bottom-card-desc {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.bottom-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  flex: 1;
+}
+
+.bottom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.8rem;
+}
+
+.bottom-table th {
+  color: #64748b;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 10px 10px;
+  border-bottom: 1px solid #e2e8f0;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.bottom-table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--text-main);
+  vertical-align: middle;
+}
+
+.bottom-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Source Badges */
+.source-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+}
+
+.tag-risetmu {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.tag-bima {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.tag-kemenag {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.tag-brin {
+  background: #ffedd5;
+  color: #c2410c;
+}
+
+/* Status Badges */
+.status-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-badge-review {
+  background: #fef3c7;
+  color: #b45309;
+}
+
+.status-badge-approved {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.status-badge-draft {
+  background: #f1f5f9;
+  color: #64748b;
+}
+
+/* Progress bar */
+.progress-cell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+}
+
+.progress-track {
+  width: 70px;
+  height: 8px;
+  background-color: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #1e3a8a;
+  border-radius: 9999px;
+}
+
+.progress-text {
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #334155;
+  min-width: 28px;
+}
+
+/* Pill Action Buttons */
+.btn-pill-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: 1.5px solid #0284c7;
+  color: #0284c7;
+  background: transparent;
+  padding: 5px 14px;
+  border-radius: 9999px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.btn-pill-action:hover {
+  background: #0284c7;
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+}
+

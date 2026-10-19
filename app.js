@@ -222,6 +222,28 @@ function initDropdowns() {
     });
   });
 
+  // Handle sub-nav dropdowns (Penelitian, Pengabdian, Pendampingan, Reviewer)
+  document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+    const link = item.querySelector('.nav-link');
+    if (!link) return;
+
+    link.addEventListener('click', (e) => {
+      const isAlreadyOpen = item.classList.contains('show');
+      
+      // Tutup dropdown lain yang sedang terbuka
+      document.querySelectorAll('.nav-item.has-dropdown').forEach(other => {
+        if (other !== item) other.classList.remove('show');
+      });
+
+      if (!isAlreadyOpen) {
+        e.preventDefault();
+        e.stopPropagation();
+        item.classList.add('show');
+      }
+      // Jika sudah terbuka, klik kembali pada judul link akan mengarahkan ke halaman default (penelitian.html)
+    });
+  });
+
   // Close when clicking outside
   document.addEventListener('click', () => {
     closeAllDropdowns();
@@ -231,6 +253,9 @@ function initDropdowns() {
 function closeAllDropdowns() {
   document.querySelectorAll('.dropdown-menu').forEach(menu => {
     menu.classList.remove('show');
+  });
+  document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+    item.classList.remove('show');
   });
   document.querySelectorAll('.nav-dropdown-btn, .user-profile-btn').forEach(btn => {
     btn.setAttribute('aria-expanded', 'false');
