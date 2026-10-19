@@ -1490,22 +1490,211 @@ body {
 }
 
 /* ==========================================================================
-   DASHBOARD BOTTOM SECTION: PELUANG EKSTERNAL & PROPOSAL SAYA
+   SIDEBAR PANEL CARDS (SESUAI FOLDER ARYA: RIWAYAT USULAN & PENGUMUMAN)
+   ========================================================================== */
+.sidebar-panel-card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+}
+
+.panel-navy-header {
+  background: var(--primary-navy);
+  color: #ffffff;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-navy-header h3 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.panel-header-link {
+  color: #93c5fd;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 700;
+  transition: opacity 0.15s ease;
+}
+
+.panel-header-link:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+
+.history-cards-list {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.history-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.history-item-row:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.item-badge-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+.item-badge-icon.blue { background: #dbeafe; color: #1e40af; }
+.item-badge-icon.green { background: #dcfce7; color: #166534; }
+.item-badge-icon.pink { background: #fce7f3; color: #9d174d; }
+
+.history-item-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+
+.history-item-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.35;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.history-item-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.history-item-scheme {
+  font-size: 0.7rem;
+  color: #64748b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.badge-status-pill {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.badge-status-pill.review { background: #fef3c7; color: #b45309; }
+.badge-status-pill.funded { background: #dcfce7; color: #15803d; }
+.badge-status-pill.done { background: #e0f2fe; color: #0369a1; }
+
+.announcement-list {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.announcement-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.announcement-item:hover {
+  background: #ffffff;
+  border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.announcement-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #e0f2fe;
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.announcement-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.announcement-date {
+  font-size: 0.7rem;
+  color: #94a3b8;
+  margin-top: 3px;
+}
+
+/* ==========================================================================
+   DASHBOARD BOTTOM SECTION: PELUANG EKSTERNAL & PROPOSAL SAYA (SIDE-BY-SIDE)
    ========================================================================== */
 .dashboard-bottom-section {
   max-width: 1400px;
   margin: 24px auto 0 auto;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 20px;
+  align-items: stretch;
+}
+
+@media (max-width: 1080px) {
+  .dashboard-bottom-section {
+    grid-template-columns: 1fr;
+  }
 }
 
 .bottom-card {
   background: var(--bg-white);
   border: 1px solid var(--border-light);
   border-radius: 12px;
-  padding: 22px 26px;
+  padding: 22px 24px;
   box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
 }
 
 .bottom-card-title {
@@ -1519,33 +1708,35 @@ body {
   font-size: 0.78rem;
   color: var(--text-muted);
   line-height: 1.5;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .bottom-table-wrapper {
   width: 100%;
   overflow-x: auto;
+  flex: 1;
 }
 
 .bottom-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
 }
 
 .bottom-table th {
   color: #64748b;
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
   letter-spacing: 0.5px;
-  padding: 10px 14px;
+  padding: 10px 10px;
   border-bottom: 1px solid #e2e8f0;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 .bottom-table td {
-  padding: 14px;
+  padding: 12px 10px;
   border-bottom: 1px solid #f1f5f9;
   color: var(--text-main);
   vertical-align: middle;
@@ -1565,6 +1756,7 @@ body {
   font-size: 0.7rem;
   font-weight: 800;
   letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
 .tag-risetmu {
@@ -1595,6 +1787,7 @@ body {
   border-radius: 9999px;
   font-size: 0.72rem;
   font-weight: 700;
+  white-space: nowrap;
 }
 
 .status-badge-review {
@@ -1616,15 +1809,17 @@ body {
 .progress-cell {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  white-space: nowrap;
 }
 
 .progress-track {
-  width: 90px;
+  width: 70px;
   height: 8px;
   background-color: #e2e8f0;
   border-radius: 9999px;
   overflow: hidden;
+  flex-shrink: 0;
 }
 
 .progress-fill {
@@ -1634,10 +1829,10 @@ body {
 }
 
 .progress-text {
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   color: #334155;
-  min-width: 32px;
+  min-width: 28px;
 }
 
 /* Pill Action Buttons */
@@ -1645,13 +1840,13 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 5px;
+  gap: 4px;
   border: 1.5px solid #0284c7;
   color: #0284c7;
   background: transparent;
-  padding: 6px 18px;
+  padding: 5px 14px;
   border-radius: 9999px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
