@@ -631,14 +631,16 @@ body {
 
 /* Hero Avatar Area & Sparkles */
 .hero-avatar-area {
-  position: relative;
-  width: 220px;
-  height: 260px;
+  position: absolute;
+  right: 15px;
+  bottom: 0;
+  width: 250px;
+  height: 270px;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
   z-index: 2;
-  flex-shrink: 0;
+  pointer-events: none;
 }
 
 .avatar-image-wrapper {
@@ -647,22 +649,24 @@ body {
   position: relative;
   display: flex;
   align-items: flex-end;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .hero-3d-character {
   width: auto;
   height: 100%;
-  max-height: 260px;
+  max-height: 270px;
   object-fit: contain;
-  object-position: bottom center;
+  object-position: bottom right;
   filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.45)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.3));
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   user-select: none;
+  display: block;
+  vertical-align: bottom;
 }
 
 .hero-card:hover .hero-3d-character {
-  transform: scale(1.05) translateY(-4px);
+  transform: scale(1.03) translateY(-2px);
 }
 
 /* Floating Sparkle Stars */
