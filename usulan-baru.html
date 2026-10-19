@@ -3,371 +3,386 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pengajuan Usulan Baru - RisetMu | LPPM UMSU</title>
+  <title>Pengajuan Usulan Baru - LPPM UMSU &amp; RisetMu</title>
   <meta name="description" content="Wizard Pengajuan Proposal RisetMu LPPM UMSU">
-  
-  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
-  <!-- Font Awesome 6 Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="penelitian.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 </head>
 <body>
 
-  <!-- TOP HEADER / NAVBAR -->
-  <header class="top-header">
-    <div class="header-container">
-      <!-- Logo RisetMu -->
-      <a href="index.html" class="brand-logo" id="brand-logo" title="RisetMu Home">
-        <div class="brand-symbol">
-          <svg viewBox="0 0 40 40" class="logo-svg">
-            <path d="M12 28V8h8a6 6 0 0 1 6 6c0 2.5-1.5 4.7-3.8 5.6L27 28h-5l-4.2-7.5H16V28h-4zm4-11.5h4a2.5 2.5 0 0 0 0-5h-4v5z" fill="#1b2b65"/>
-            <circle cx="28" cy="11" r="3" fill="#0ea5e9"/>
-            <path d="M28 6v2M28 14v2M23 11h2M31 11h2" stroke="#0ea5e9" stroke-width="1.5" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="brand-name">
-          <span class="logo-riset">R<span class="logo-bulb-i">i</span>set</span><span class="logo-mu">mu</span>
+  <!-- TOP NAVBAR -->
+  <header class="top-navbar">
+    <div class="nav-left-section">
+      <a class="brand-lppm-link" href="index.html">
+        <div class="brand-badge-u">U</div>
+        <div class="brand-text-block">
+          <span class="brand-title">LPPM UMSU</span>
+          <span class="brand-tagline">Riset · Inovasi · Pengabdian · Dampak</span>
         </div>
       </a>
 
-      <!-- Right Action Items -->
-      <div class="header-actions">
-        <!-- Academic Year Dropdown -->
-        <div class="dropdown-wrapper">
-          <button class="pill-btn nav-dropdown-btn" id="yearDropdownBtn" aria-expanded="false" title="Pilih Periode">
-            <i class="fa-regular fa-calendar-days"></i>
-            <span id="selectedYear">2026/2027</span>
-            <i class="fa-solid fa-chevron-down arrow-icon"></i>
-          </button>
-          <div class="dropdown-menu" id="yearDropdownMenu">
-            <div class="dropdown-item active" data-year="2026/2027"><i class="fa-solid fa-check"></i> 2026/2027 (Aktif)</div>
-            <div class="dropdown-item" data-year="2025/2026">2025/2026</div>
-          </div>
-        </div>
+      <nav class="main-nav-links">
+        <a class="nav-item" href="index.html">Dashboard</a>
+        <a class="nav-item active" href="penelitian.html">Penelitian</a>
+        <a class="nav-item" href="javascript:void(0)" onclick="showToast('Menu Pengabdian')">Pengabdian</a>
+        <a class="nav-item" href="javascript:void(0)" onclick="showToast('Menu Pendampingan')">Pendampingan</a>
+        <a class="nav-item" href="javascript:void(0)" onclick="showToast('Menu Luaran')">Luaran</a>
+        <a class="nav-item" href="javascript:void(0)" onclick="showToast('Panduan Penelitian 2026')">Panduan</a>
+      </nav>
+    </div>
 
-        <!-- Role Dropdown -->
-        <div class="dropdown-wrapper">
-          <button class="pill-btn nav-dropdown-btn" id="roleDropdownBtn" aria-expanded="false" title="Ganti Peran">
-            <i class="fa-regular fa-user"></i>
-            <span id="selectedRole">DOSEN</span>
-            <i class="fa-solid fa-chevron-down arrow-icon"></i>
-          </button>
-          <div class="dropdown-menu" id="roleDropdownMenu">
-            <div class="dropdown-item active" data-role="DOSEN"><i class="fa-solid fa-check"></i> DOSEN</div>
-            <div class="dropdown-item" data-role="REVIEWER">REVIEWER</div>
-          </div>
-        </div>
+    <div class="nav-right-controls">
+      <div class="dropdown-relative">
+        <button class="control-pill-btn" id="btnYearDropdown" type="button">
+          <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
+          <span id="currentYearText">2026/2027</span>
+          <svg viewBox="0 0 24 24" width="11" height="11"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+      </div>
 
-        <!-- Notification Bell -->
-        <div class="dropdown-wrapper">
-          <button class="icon-btn notif-btn" id="notifBtn" title="Notifikasi">
-            <i class="fa-regular fa-bell"></i>
-            <span class="notif-badge-dot"></span>
-          </button>
-        </div>
+      <div class="dropdown-relative">
+        <button class="control-pill-btn" id="btnRoleDropdown" type="button">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+          <span id="currentRoleText">DOSEN</span>
+          <svg viewBox="0 0 24 24" width="11" height="11"><path d="M7 10l5 5 5-5z"/></svg>
+        </button>
+      </div>
 
-        <!-- User Profile Pill -->
-        <div class="dropdown-wrapper">
-          <button class="user-profile-btn" id="userProfileBtn" aria-expanded="false">
-            <div class="user-avatar-circle">
-              <i class="fa-solid fa-user"></i>
-            </div>
-            <span class="user-name">YOSHIDA SARY</span>
-            <i class="fa-solid fa-chevron-down arrow-icon"></i>
-          </button>
+      <button class="icon-bell-btn" type="button" title="Notifikasi" onclick="showToast('Notifikasi hibah')">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+        </svg>
+      </button>
+
+      <div class="user-profile-widget" id="btnUserDropdown">
+        <div class="avatar-circle-sm">YS</div>
+        <div class="user-meta-info">
+          <span class="user-meta-name">YOSHIDA SARY</span>
+          <span class="user-meta-role">Dosen</span>
         </div>
       </div>
     </div>
   </header>
 
-  <!-- SUB NAVIGATION MENU -->
-  <nav class="sub-nav">
-    <div class="sub-nav-container">
-      <ul class="nav-links">
-        <li class="nav-item">
-          <a href="index.html" class="nav-link">
-            <i class="fa-solid fa-house"></i>
-            <span>Dashboard</span>
-          </a>
-        </li>
-        <li class="nav-item has-dropdown active">
-          <a href="penelitian.html" class="nav-link">
-            <i class="fa-solid fa-flask"></i>
-            <span>Penelitian</span>
-            <i class="fa-solid fa-chevron-down sub-arrow"></i>
-          </a>
-          <ul class="sub-dropdown">
-            <li><a href="usulan-baru.html" style="font-weight: 700; color: #1a56db;">Usulan Baru</a></li>
-            <li><a href="penelitian.html">Riwayat Usulan Penelitian</a></li>
-            <li><a href="#" onclick="showToast('Menu Laporan Kemajuan')">Laporan Kemajuan</a></li>
-            <li><a href="#" onclick="showToast('Menu Laporan Akhir')">Laporan Akhir</a></li>
-          </ul>
-        </li>
-        <li class="nav-item has-dropdown">
-          <a href="#" class="nav-link">
-            <i class="fa-solid fa-hand-holding-heart"></i>
-            <span>Pengabdian</span>
-            <i class="fa-solid fa-chevron-down sub-arrow"></i>
-          </a>
-          <ul class="sub-dropdown">
-            <li><a href="#" onclick="showToast('Menu Usulan Baru Pengabdian')">Usulan Baru Pengabdian</a></li>
-            <li><a href="#" onclick="showToast('Menu Riwayat Pengabdian')">Riwayat Usulan Pengabdian</a></li>
-          </ul>
-        </li>
-        <li class="nav-item has-dropdown">
-          <a href="#" class="nav-link">
-            <i class="fa-regular fa-file-lines"></i>
-            <span>Pendampingan</span>
-            <i class="fa-solid fa-chevron-down sub-arrow"></i>
-          </a>
-        </li>
-        <li class="nav-item has-dropdown">
-          <a href="#" class="nav-link">
-            <i class="fa-solid fa-user-check"></i>
-            <span>Pengajuan Reviewer</span>
-            <i class="fa-solid fa-chevron-down sub-arrow"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-
   <!-- MAIN CONTAINER -->
-  <main class="main-wrapper" style="padding-top: 1.5rem;">
-    <div style="max-width: 1400px; margin: 0 auto; padding: 0 24px;">
+  <main class="app-container">
 
-      <!-- BREADCRUMB (MATCHES SCREENSHOT 2) -->
-      <div class="breadcrumb-nav">
-        <a href="index.html">Dashboard</a> <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i> 
-        <a href="penelitian.html">Penelitian</a> <i class="fa-solid fa-chevron-right" style="font-size: 0.65rem;"></i> 
-        <span>Usulan Baru</span>
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb-nav">
+      <a href="index.html">Dashboard</a> &rsaquo; <a href="penelitian.html">Penelitian</a> &rsaquo; <span>Usulan Baru</span>
+    </div>
+
+    <!-- INFO BANNER (ALUR RISETMU) -->
+    <div class="info-notification-bar">
+      <div class="info-badge-tag">
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+        INFO
       </div>
+      <div class="info-title-text">Identitas Usulan Penelitian Baru - Tahun Pelaksanaan 2026/2027</div>
+    </div>
 
-      <!-- INFO BANNER (EXACT SCREENSHOT 2 MATCH) -->
-      <div class="info-notification-bar">
-        <div class="info-badge-tag">
-          <i class="fa-solid fa-circle-info"></i>
-          <span>INFO</span>
+    <!-- STEPPER 5 TAHAPAN RISETMU -->
+    <div class="stepper-progress-container">
+      <div class="stepper-track">
+        <div class="step-item active" data-step="1">
+          <div class="step-bubble"></div>
+          <span class="step-label">Identitas Usulan</span>
         </div>
-        <div class="info-title-text">
-          Identitas Usulan Penelitian Baru &ndash; Tahun Pelaksanaan 2026/2027
+        <div class="step-item" data-step="2">
+          <div class="step-bubble"></div>
+          <span class="step-label">Substansi Usulan</span>
         </div>
-      </div>
-
-      <!-- STEPPER PROGRESS CONTAINER (5 TAHAPAN RISETMU) -->
-      <div class="stepper-progress-container">
-        <div class="stepper-track">
-          <div class="step-item active" data-step="1">
-            <div class="step-bubble"></div>
-            <span class="step-label">Identitas Usulan</span>
-          </div>
-          <div class="step-item" data-step="2">
-            <div class="step-bubble"></div>
-            <span class="step-label">Substansi Usulan</span>
-          </div>
-          <div class="step-item" data-step="3">
-            <div class="step-bubble"></div>
-            <span class="step-label">RAB</span>
-          </div>
-          <div class="step-item" data-step="4">
-            <div class="step-bubble"></div>
-            <span class="step-label">Dokumen Pendukung</span>
-          </div>
-          <div class="step-item" data-step="5">
-            <div class="step-bubble"></div>
-            <span class="step-label">Kirim Usulan</span>
-          </div>
+        <div class="step-item" data-step="3">
+          <div class="step-bubble"></div>
+          <span class="step-label">RAB</span>
+        </div>
+        <div class="step-item" data-step="4">
+          <div class="step-bubble"></div>
+          <span class="step-label">Dokumen Pendukung</span>
+        </div>
+        <div class="step-item" data-step="5">
+          <div class="step-bubble"></div>
+          <span class="step-label">Kirim Usulan</span>
         </div>
       </div>
+    </div>
 
-      <!-- ACCORDIONS WRAPPER -->
-      <div class="accordion-wrapper">
+    <!-- ACCORDIONS RISETMU (STYLING LPPM UMSU) -->
+    <div class="accordion-wrapper">
 
-        <!-- ACCORDION 1: IDENTITAS PENGUSUL KETUA (MATCHES SCREENSHOT 2) -->
-        <div class="accordion-panel">
-          <div class="accordion-header">
-            <h4>Identitas Pengusul Ketua</h4>
-            <svg class="accordion-toggle-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
-          </div>
-          <div class="accordion-body">
-            <div class="kv-table">
-              <div class="kv-row">
-                <span class="kv-key">Nama</span>
-                <span class="kv-val">: YOSHIDA SARY</span>
-              </div>
-              <div class="kv-row">
-                <span class="kv-key">NIDN/NIDK</span>
-                <span class="kv-val">: 0105067603</span>
-              </div>
-              <div class="kv-row">
-                <span class="kv-key">Perguruan Tinggi</span>
-                <span class="kv-val">: Universitas Muhammadiyah Sumatera Utara</span>
-              </div>
-              <div class="kv-row">
-                <span class="kv-key">Program Studi</span>
-                <span class="kv-val">: Sistem Informasi</span>
-              </div>
-              <div class="kv-row">
-                <span class="kv-key">ID Sinta</span>
-                <span class="kv-val">: 6763588 (Score Overall: 589)</span>
-              </div>
-              <div class="kv-row">
-                <span class="kv-key">Kualifikasi</span>
-                <span class="kv-val">: S2 &ndash; Lektor</span>
-              </div>
-              <div class="kv-row">
-                <span class="kv-key">Alamat Surel</span>
-                <span class="kv-val">: yoshidasary@umsu.ac.id</span>
-              </div>
+      <!-- PANEL 1: IDENTITAS PENGUSUL KETUA -->
+      <div class="accordion-panel">
+        <div class="accordion-header">
+          <h4>Identitas Pengusul Ketua</h4>
+          <svg class="accordion-toggle-icon" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="kv-table">
+            <div class="kv-row">
+              <span class="kv-key">Nama</span>
+              <span class="kv-val">: YOSHIDA SARY</span>
+            </div>
+            <div class="kv-row">
+              <span class="kv-key">NIDN/NIDK</span>
+              <span class="kv-val">: 0105067603</span>
+            </div>
+            <div class="kv-row">
+              <span class="kv-key">Perguruan Tinggi</span>
+              <span class="kv-val">: Universitas Muhammadiyah Sumatera Utara</span>
+            </div>
+            <div class="kv-row">
+              <span class="kv-key">Program Studi</span>
+              <span class="kv-val">: Sistem Informasi</span>
+            </div>
+            <div class="kv-row">
+              <span class="kv-key">ID Sinta</span>
+              <span class="kv-val">: 6763588 (Score Overall: 589)</span>
+            </div>
+            <div class="kv-row">
+              <span class="kv-key">Kualifikasi</span>
+              <span class="kv-val">: S2 - Lektor</span>
+            </div>
+            <div class="kv-row">
+              <span class="kv-key">Alamat Surel</span>
+              <span class="kv-val">: yoshidasary@umsu.ac.id</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- ACCORDION 2: SKEMA PT KLASTER UTAMA (MATCHES SCREENSHOT 2) -->
-        <div class="accordion-panel">
-          <div class="accordion-header">
-            <h4>Skema PT Klaster Utama</h4>
-            <svg class="accordion-toggle-icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+      <!-- PANEL 2: SKEMA PT KLASTER UTAMA & RISALAH ISLAM BERKEMAJUAN (RIB) -->
+      <div class="accordion-panel">
+        <div class="accordion-header">
+          <h4>Skema PT Klaster Utama</h4>
+          <svg class="accordion-toggle-icon" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="form-group" style="margin-bottom: 1rem;">
+            <label>Skim Penelitian</label>
+            <select id="selectSkimPenelitian" class="form-control" style="font-weight: 600; cursor: pointer; background: #ffffff;">
+              <option value="Penelitian Fundamental Reguler I" selected>Penelitian Fundamental Reguler I</option>
+              <option value="Penelitian Fundamental Reguler II">Penelitian Fundamental Reguler II</option>
+              <option value="Penelitian Terapan Reguler">Penelitian Terapan Reguler</option>
+              <option value="Penelitian Pengembangan Unggulan">Penelitian Pengembangan Unggulan</option>
+              <option value="Penelitian Dosen Pemula (PDP)">Penelitian Dosen Pemula (PDP)</option>
+              <option value="Penelitian Kolaborasi Antar Perguruan Tinggi (PKPT)">Penelitian Kolaborasi Antar Perguruan Tinggi (PKPT)</option>
+              <option value="Penelitian Pascasarjana Magister/Doktor">Penelitian Pascasarjana Magister/Doktor</option>
+              <option value="Pengabdian Kepada Masyarakat Berkemajuan">Pengabdian Kepada Masyarakat Berkemajuan</option>
+            </select>
           </div>
-          <div class="accordion-body">
-            
-            <div class="form-group" style="margin-bottom: 1.2rem;">
-              <label>Skim Penelitian <span style="color: #ef4444;">*</span></label>
-              <select class="form-control" id="selectSkim">
-                <option value="Penelitian Fundamental Reguler I" selected>Penelitian Fundamental Reguler I</option>
-                <option value="Penelitian Terapan Unggulan (PTU)">Penelitian Terapan Unggulan (PTU)</option>
-                <option value="Penelitian Dosen Pemula (PDP)">Penelitian Dosen Pemula (PDP)</option>
-                <option value="Penelitian Pascasarjana Kolaborasi">Penelitian Pascasarjana Kolaborasi</option>
+
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label>Bidang Fokus Penelitian</label>
+              <div id="selectBidangFokus" class="dynamic-select-tag-box">
+                <div class="select-tag-trigger">
+                  <div class="tag-holder">
+                    <span class="tag-badge">Teknologi Informasi dan Komunikasi <span class="remove-tag" title="Hapus kriteria">✕</span></span>
+                  </div>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="#64748b"><path d="M7 10l5 5 5-5z"/></svg>
+                </div>
+                <div class="dynamic-options-dropdown"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Tema Penelitian</label>
+              <div id="selectTemaPenelitian" class="dynamic-select-tag-box">
+                <div class="select-tag-trigger">
+                  <div class="tag-holder">
+                    <span class="tag-badge">Pengembangan sistem berbasis kecerdasan buatan <span class="remove-tag" title="Hapus kriteria">✕</span></span>
+                  </div>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="#64748b"><path d="M7 10l5 5 5-5z"/></svg>
+                </div>
+                <div class="dynamic-options-dropdown"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Topik Penelitian</label>
+              <div id="selectTopikPenelitian" class="dynamic-select-tag-box">
+                <div class="select-tag-trigger">
+                  <div class="tag-holder">
+                    <span class="tag-badge">Pengembangan aplikasi sistem cerdas <span class="remove-tag" title="Hapus kriteria">✕</span></span>
+                  </div>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="#64748b"><path d="M7 10l5 5 5-5z"/></svg>
+                </div>
+                <div class="dynamic-options-dropdown"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-grid-3">
+            <div class="form-group">
+              <label>Rumpun Ilmu Level 1</label>
+              <div id="selectRumpun1" class="dynamic-select-tag-box">
+                <div class="select-tag-trigger">
+                  <div class="tag-holder">
+                    <span class="tag-badge">ILMU TEKNIK <span class="remove-tag" title="Hapus kriteria">✕</span></span>
+                  </div>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="#64748b"><path d="M7 10l5 5 5-5z"/></svg>
+                </div>
+                <div class="dynamic-options-dropdown"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Rumpun Ilmu Level 2</label>
+              <div id="selectRumpun2" class="dynamic-select-tag-box">
+                <div class="select-tag-trigger">
+                  <div class="tag-holder">
+                    <span class="tag-badge">TEKNIK ELEKTRO DAN INFORMATIKA <span class="remove-tag" title="Hapus kriteria">✕</span></span>
+                  </div>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="#64748b"><path d="M7 10l5 5 5-5z"/></svg>
+                </div>
+                <div class="dynamic-options-dropdown"></div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Rumpun Ilmu Level 3</label>
+              <div id="selectRumpun3" class="dynamic-select-tag-box">
+                <div class="select-tag-trigger">
+                  <div class="tag-holder">
+                    <span class="tag-badge">Sistem Informasi <span class="remove-tag" title="Hapus kriteria">✕</span></span>
+                  </div>
+                  <svg viewBox="0 0 24 24" width="12" height="12" fill="#64748b"><path d="M7 10l5 5 5-5z"/></svg>
+                </div>
+                <div class="dynamic-options-dropdown"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group" style="margin-top: 0.9rem;">
+            <label>Prioritas Riset</label>
+            <div id="selectPrioritasRiset" class="dynamic-select-tag-box" style="max-width: 420px;">
+              <div class="select-tag-trigger">
+                <div class="tag-holder">
+                  <span class="tag-badge">Digital Economy <span class="remove-tag" title="Hapus kriteria">✕</span></span>
+                </div>
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="#64748b"><path d="M7 10l5 5 5-5z"/></svg>
+              </div>
+              <div class="dynamic-options-dropdown"></div>
+            </div>
+          </div>
+
+          <!-- SDGs -->
+          <div style="font-size: 0.72rem; color: #475569; margin-top: 1.2rem; font-weight: 700;">Sustainable Development Goals (SDGs)</div>
+          <div class="form-group" style="margin-top: 2px;">
+            <label>Tujuan SDGs</label>
+            <select class="form-control">
+              <option value="">Pilih Tujuan SDGs</option>
+              <option value="1">1. Tanpa Kemiskinan (No Poverty)</option>
+              <option value="4" selected>4. Pendidikan Berkualitas (Quality Education)</option>
+              <option value="8">8. Pekerjaan Layak &amp; Pertumbuhan Ekonomi</option>
+              <option value="9">9. Industri, Inovasi, dan Infrastruktur</option>
+            </select>
+          </div>
+
+          <!-- Risalah Islam Berkemajuan (RIB) - Khas RisetMu -->
+          <div style="font-size: 0.72rem; color: #1e40af; margin-top: 1.2rem; font-weight: 800;">
+            Risalah Islam Berkemajuan (RIB) - Standar Majelis Diktilitbang PP Muhammadiyah
+          </div>
+          <div class="form-grid-2" style="margin-top: 2px;">
+            <div class="form-group">
+              <label>Ranah RIB</label>
+              <select class="form-control">
+                <option value="">Pilih Ranah RIB</option>
+                <option value="1" selected>Ranah Keilmuan, Riset dan Teknologi Berkemajuan</option>
+                <option value="2">Ranah Keumatan dan Persyarikatan</option>
+                <option value="3">Ranah Kebangsaan &amp; Kemanusiaan Global</option>
               </select>
             </div>
 
-            <!-- 3-COL DYNAMIC RESEARCH TAXONOMY DROPDOWNS -->
-            <div class="form-grid-3">
-              <!-- Field 1: Bidang Fokus -->
-              <div class="form-group">
-                <label>Bidang Fokus Penelitian</label>
-                <div class="dynamic-select-tag-box">
-                  <div class="select-tag-trigger" id="triggerBidangFokus">
-                    <div class="tag-holder" id="holderBidangFokus"></div>
-                    <svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 10l5 5 5-5z"/></svg>
-                  </div>
-                  <div class="dynamic-options-dropdown" id="dropdownBidangFokus"></div>
-                </div>
-              </div>
-
-              <!-- Field 2: Tema Penelitian -->
-              <div class="form-group">
-                <label>Tema Penelitian</label>
-                <div class="dynamic-select-tag-box">
-                  <div class="select-tag-trigger" id="triggerTema">
-                    <div class="tag-holder" id="holderTema"></div>
-                    <svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 10l5 5 5-5z"/></svg>
-                  </div>
-                  <div class="dynamic-options-dropdown" id="dropdownTema"></div>
-                </div>
-              </div>
-
-              <!-- Field 3: Topik Penelitian -->
-              <div class="form-group">
-                <label>Topik Penelitian</label>
-                <div class="dynamic-select-tag-box">
-                  <div class="select-tag-trigger" id="triggerTopik">
-                    <div class="tag-holder" id="holderTopik"></div>
-                    <svg viewBox="0 0 24 24" width="14" height="14"><path d="M7 10l5 5 5-5z"/></svg>
-                  </div>
-                  <div class="dynamic-options-dropdown" id="dropdownTopik"></div>
-                </div>
-              </div>
+            <div class="form-group">
+              <label>Perkhidmatan RIB</label>
+              <select class="form-control">
+                <option value="">Pilih Perkhidmatan RIB</option>
+                <option value="1" selected>Perkhidmatan Pendidikan &amp; Transformasi Digital</option>
+                <option value="2">Perkhidmatan Ekonomi dan Kewirausahaan Umat</option>
+                <option value="3">Perkhidmatan Kesehatan dan Sosial</option>
+              </select>
             </div>
-
-            <!-- 2-COL FORM: TKT & RUMPUN ILMU -->
-            <div class="form-grid-2" style="margin-top: 1.2rem;">
-              <div class="form-group">
-                <label>Target Kesiapan Teknologi (TKT)</label>
-                <select class="form-control">
-                  <option value="1">TKT 1 - Prinsip dasar riset formulasi</option>
-                  <option value="2">TKT 2 - Konsep teknologi terformulasikan</option>
-                  <option value="3" selected>TKT 3 - Pembuktian konsep eksperimental analitis</option>
-                  <option value="4">TKT 4 - Validasi komponen di lingkungan laboratorium</option>
-                  <option value="5">TKT 5 - Validasi komponen di lingkungan relevan</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label>Rumpun Ilmu Utama</label>
-                <select class="form-control">
-                  <option value="Ilmu Komputer & Informatika" selected>Ilmu Komputer &amp; Informatika / Rekayasa Perangkat Lunak</option>
-                  <option value="Teknik Elektro">Teknik Elektro &amp; Mekatronika</option>
-                  <option value="Kesehatan Masyarakat">Kesehatan Masyarakat &amp; Kedokteran</option>
-                  <option value="Ekonomi dan Bisnis">Ekonomi Bisnis &amp; Manajemen</option>
-                </select>
-              </div>
-            </div>
-
-            <!-- JUDUL USULAN & ANGGARAN -->
-            <div style="margin-top: 1.2rem;">
-              <div class="form-group" style="margin-bottom: 1.2rem;">
-                <label>Judul Usulan Penelitian <span style="color: #ef4444;">*</span></label>
-                <input type="text" class="form-control" placeholder="Ketikkan judul proposal penelitian lengkap..." value="Penerapan Model Deep Learning Untuk Pemetaan Data Pertanian Presisi Di Sumatera Utara">
-              </div>
-
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label>Usulan Biaya / Dana (Rp)</label>
-                  <input type="number" class="form-control" value="35000000" min="5000000" step="1000000">
-                </div>
-                <div class="form-group">
-                  <label>Lama Penelitian (Tahun)</label>
-                  <select class="form-control">
-                    <option value="1" selected>1 Tahun (2026/2027)</option>
-                    <option value="2">2 Tahun (Multi-Tahun)</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-
           </div>
-        </div>
 
+        </div>
       </div>
 
-      <!-- WIZARD ACTION BUTTONS -->
-      <div class="wizard-footer-actions">
-        <a href="penelitian.html" class="btn btn-secondary">
-          <i class="fa-solid fa-arrow-left"></i> Kembali ke Daftar Usulan
-        </a>
-        <div style="display: flex; gap: 10px;">
-          <button type="button" class="btn btn-secondary" onclick="showToast('Draft usulan berhasil disimpan sementara', 'success')">
-            <i class="fa-solid fa-floppy-disk"></i> Simpan Draft
-          </button>
-          <button type="button" class="btn-wizard-next" id="btnNextWizard">
-            Selanjutnya: Substansi Usulan <i class="fa-solid fa-arrow-right"></i>
-          </button>
+      <!-- PANEL 3: PERIODE PENELITIAN -->
+      <div class="accordion-panel">
+        <div class="accordion-header">
+          <h4>Periode Penelitian</h4>
+          <svg class="accordion-toggle-icon" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div class="period-date-box">
+            <div><strong>Periode :</strong> 2026/2027</div>
+            <div><strong>Batch :</strong> 10 (Hibah Internal LPPM UMSU &amp; RisetMu)</div>
+            <div><strong>Buka :</strong> <span class="open-text">Selasa, 26 Agustus 2026</span></div>
+            <div><strong>Tutup :</strong> <span class="close-text">Selasa, 13 Oktober 2026</span></div>
+          </div>
+
+          <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+            <button class="btn-wizard-next" id="btnNextWizard" type="button">
+              <span>Selanjutnya &rarr;</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 4: DAFTAR USULAN PENELITIAN BARU -->
+      <div class="accordion-panel">
+        <div class="accordion-header">
+          <h4>Daftar Usulan Penelitian Baru</h4>
+          <svg class="accordion-toggle-icon" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>
+        </div>
+        <div class="accordion-body">
+          <div style="border: 1px solid #cbd5e1; border-radius: 6px; padding: 1rem 1.2rem; background: #ffffff; display: flex; flex-direction: column; gap: 5px; font-size: 0.82rem;">
+            <div><strong>Tahun Usulan :</strong> 2026 | <strong>Tahun Pelaksanaan :</strong> 2026</div>
+            <div><strong>Skema Penelitian :</strong> Penelitian Fundamental Reguler I</div>
+            <div style="display: flex; align-items: center; gap: 8px; margin: 3px 0;">
+              <strong>Status Usulan :</strong>
+              <span style="background: #f59e0b; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 10px; border-radius: 4px; cursor: pointer;" onclick="showToast('Melanjutkan pengisian proposal')">Lanjutkan</span>
+            </div>
+            <div><strong>Batch :</strong> 10</div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+              <strong>Status Penetapan :</strong>
+              <span style="background: #64748b; color: #fff; font-size: 0.72rem; font-weight: 700; padding: 2px 10px; border-radius: 4px;">Draft</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 5: DAFTAR USULAN ANGGOTA -->
+      <div class="accordion-panel">
+        <div class="accordion-header">
+          <h4>Daftar Usulan sebagai Anggota Penelitian Baru</h4>
+          <svg class="accordion-toggle-icon" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>
+        </div>
+        <div class="accordion-body">
+          <p style="font-size: 0.82rem; color: #64748b; font-style: italic;">
+            Belum ada usulan Penelitian sebagai anggota...
+          </p>
         </div>
       </div>
 
     </div>
+
   </main>
 
   <!-- FOOTER -->
-  <footer class="main-footer" style="margin-top: 3.5rem;">
-    <div class="footer-container">
-      <p>2026 &copy; RisetMu. [v1.0] - LPPM Universitas Muhammadiyah Sumatera Utara</p>
+  <footer class="site-footer">
+    <div>&copy; 2026 LPPM UMSU. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="javascript:void(0)">Kebijakan Privasi</a>
+      <span>|</span>
+      <a href="javascript:void(0)">Syarat Penggunaan</a>
+      <span>|</span>
+      <a href="javascript:void(0)">Kontak</a>
     </div>
   </footer>
 
-  <!-- TOAST NOTIFICATION CONTAINER -->
-  <div class="toast-container" id="toastContainer"></div>
-
-  <!-- Scripts -->
-  <script src="app.js"></script>
-  <script src="penelitian.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
