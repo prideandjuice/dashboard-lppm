@@ -197,6 +197,8 @@ function openDetailPenelitianModal(id) {
 function initTableFilters() {
   const tabs = document.querySelectorAll('.filter-tab-pill');
   const rows = document.querySelectorAll('.proposal-data-row');
+  const emptyRow = document.getElementById('emptyStateRow');
+  const emptyText = document.getElementById('emptyStateText');
   if (!tabs.length || !rows.length) return;
 
   tabs.forEach(tab => {
@@ -205,16 +207,28 @@ function initTableFilters() {
       tab.classList.add('active');
 
       const filter = tab.dataset.filter;
+      let visibleCount = 0;
       rows.forEach(row => {
         if (filter === 'all' || row.dataset.status === filter) {
           row.style.display = '';
+          visibleCount++;
         } else {
           row.style.display = 'none';
         }
       });
-      if (typeof showToast === 'function') {
-        showToast('Filter: ' + tab.textContent);
+
+      if (emptyRow) {
+        if (visibleCount === 0) {
+          emptyRow.style.display = '';
+          if (emptyText) {
+            emptyText.textContent = `Belum ada usulan penelitian dengan status "${tab.textContent.trim()}" pada periode berjalan.`;
+          }
+        } else {
+          emptyRow.style.display = 'none';
+        }
       }
+
+
     });
   });
 }

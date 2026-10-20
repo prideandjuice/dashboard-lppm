@@ -12,8 +12,8 @@
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=13">
-  <link rel="stylesheet" href="css/penelitian.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=15">
+  <link rel="stylesheet" href="css/penelitian.css?v=15">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 </head>
 <body>
@@ -248,6 +248,25 @@
                 </tr>
               </thead>
               <tbody>
+                <!-- Empty State Row (shown when filter yields 0 results, e.g. "Didanai") -->
+                <tr class="table-empty-row" id="emptyStateRow" style="display: none;">
+                  <td colspan="5">
+                    <div class="table-empty-state">
+                      <div class="table-empty-icon">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                          <polyline points="14 2 14 8 20 8"></polyline>
+                          <line x1="16" y1="13" x2="8" y2="13"></line>
+                          <line x1="16" y1="17" x2="8" y2="17"></line>
+                          <polyline points="10 9 9 9 8 9"></polyline>
+                        </svg>
+                      </div>
+                      <p class="table-empty-title" id="emptyStateText">Belum ada usulan penelitian pada kategori ini.</p>
+                      <p class="table-empty-subtitle">Silakan ajukan usulan baru atau pilih kategori lainnya.</p>
+                    </div>
+                  </td>
+                </tr>
+
                 <!-- Row 1 -->
                 <tr class="proposal-data-row" data-status="review">
                   <td class="proposal-title-cell">
@@ -355,6 +374,6 @@
   </footer>
 
   <script src="js/app.js"></script>
-  <script src="js/penelitian.js?v=13"></script>
+  <script src="js/penelitian.js?v=15"></script>
 </body>
 </html>
