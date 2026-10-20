@@ -12,8 +12,8 @@
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=13">
-  <link rel="stylesheet" href="css/penelitian.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/penelitian.css?v=15">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 </head>
 <body>
@@ -204,11 +204,6 @@
       </div>
     </div>
 
-    <!-- BREADCRUMB -->
-    <div class="breadcrumb-nav">
-      <a href="index.html">Dashboard</a> &rsaquo; <span>Penelitian</span>
-    </div>
-
     <!-- 2-COL LAYOUT -->
     <div class="dashboard-grid-layout">
 
@@ -229,114 +224,94 @@
           <!-- Filter Tabs -->
           <div class="filter-tabs-row">
             <button class="filter-tab-pill active" data-filter="all">Semua</button>
-            <button class="filter-tab-pill" data-filter="draft">Draft</button>
-            <button class="filter-tab-pill" data-filter="review">Sedang Review</button>
+            <button class="filter-tab-pill" data-filter="rejected">Tidak Didanai</button>
             <button class="filter-tab-pill" data-filter="funded">Didanai</button>
-            <button class="filter-tab-pill" data-filter="done">Selesai</button>
+            <button class="filter-tab-pill" data-filter="review">Sedang Review</button>
+            <button class="filter-tab-pill" data-filter="draft">Draft</button>
           </div>
 
-          <!-- Data Table -->
+          <!-- Data Table (Exact Match Screenshot) -->
           <div class="data-table-container">
-            <table class="lppm-table">
+            <table class="lppm-table lppm-bordered-table">
               <thead>
                 <tr>
-                  <th>Judul</th>
-                  <th>Skema</th>
-                  <th>Tahun</th>
-                  <th>Status</th>
-                  <th>Aksi</th>
+                  <th style="width: 50px; text-align: center;">No</th>
+                  <th style="width: 170px;">Ketua</th>
+                  <th style="min-width: 320px;">Judul</th>
+                  <th style="width: 150px;">Skema</th>
+                  <th style="width: 160px;">Bidang Fokus</th>
+                  <th style="width: 110px; text-align: center;">Tahun Pelaksanaan</th>
+                  <th style="width: 90px; text-align: center;">Peran</th>
+                  <th style="width: 125px; text-align: center;">Status Usulan</th>
+                  <th style="width: 110px; text-align: center;">Komentar LPPM</th>
+                  <th style="width: 110px; text-align: center;">Komentar Reviewer</th>
+                  <th style="width: 65px; text-align: center;">Aksi</th>
                 </tr>
               </thead>
               <tbody>
                 <!-- Row 1 -->
-                <tr class="proposal-data-row" data-status="review">
-                  <td class="proposal-title-cell">
-                    <h5>Pengembangan Sistem Informasi Desa Digital</h5>
-                    <span>UMSU-PNLT-2026-001</span>
+                <tr class="proposal-data-row" data-status="rejected">
+                  <td class="text-center font-semibold">1</td>
+                  <td class="cell-ketua">
+                    <div class="ketua-name">YOSHIDA SARY</div>
+                    <div class="ketua-nidn">(0105067603)</div>
                   </td>
-                  <td>Reguler</td>
-                  <td>2026</td>
-                  <td>
-                    <span class="badge-status-pill review">Sedang Review</span>
+                  <td class="cell-judul">
+                    Perancangan Model Enterprise Architecture Digital Readiness untuk Mendukung Transformasi Rantai Pasok Industri Ritel di Kota Medan dengan dukungan Artificial Intelligence
                   </td>
-                  <td>
-                    <a href="usulan-baru.html" class="action-link-arrow">Buka &rarr;</a>
+                  <td>Penelitian Dosen Pemula</td>
+                  <td>Produk rekayasa keteknikan</td>
+                  <td class="text-center">2026</td>
+                  <td class="text-center">Ketua</td>
+                  <td class="text-center">
+                    <span class="badge-status-rejected">Tidak Didanai</span>
+                  </td>
+                  <td class="text-center">
+                    <button type="button" class="btn-table-comment" onclick="showToast('Komentar LPPM: Proposal belum memenuhi kriteria target luaran')">Komentar</button>
+                  </td>
+                  <td class="text-center">
+                    <button type="button" class="btn-table-comment" onclick="showToast('Komentar Reviewer: Metodologi dan timeline perlu diperjelas')">Komentar</button>
+                  </td>
+                  <td class="text-center">
+                    <button type="button" class="btn-table-view" title="Lihat Detail Proposal" onclick="showToast('Membuka detail usulan...')">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
                   </td>
                 </tr>
 
                 <!-- Row 2 -->
-                <tr class="proposal-data-row" data-status="done">
-                  <td class="proposal-title-cell">
-                    <h5>Model Prediksi Harga Padi Menggunakan ML</h5>
-                    <span>UMSU-PNLT-2025-017</span>
+                <tr class="proposal-data-row" data-status="rejected">
+                  <td class="text-center font-semibold">2</td>
+                  <td class="cell-ketua">
+                    <div class="ketua-name">MARTIANO</div>
+                    <div class="ketua-nidn">(0128029302)</div>
                   </td>
-                  <td>Internal</td>
-                  <td>2025</td>
-                  <td>
-                    <span class="badge-status-pill done">Selesai</span>
+                  <td class="cell-judul">
+                    Pengembangan Algoritma PCA-SVM pada Sistem IoT untuk Deteksi Rasa Buah Durian (Durio zibethinus)
                   </td>
-                  <td>
-                    <a href="javascript:void(0)" class="action-link-arrow" onclick="showToast('Menampilkan arsip usulan selesai')">Lihat &rarr;</a>
+                  <td>Penelitian Dosen Pemula</td>
+                  <td>Produk rekayasa keteknikan</td>
+                  <td class="text-center">2026</td>
+                  <td class="text-center">Anggota</td>
+                  <td class="text-center">
+                    <span class="badge-status-rejected">Tidak Didanai</span>
                   </td>
-                </tr>
-
-                <!-- Row 3 (Draft example to demonstrate filtering) -->
-                <tr class="proposal-data-row" data-status="draft">
-                  <td class="proposal-title-cell">
-                    <h5>Implementasi Smart Agriculture Berbasis IoT pada Kelompok Tani</h5>
-                    <span>UMSU-PNLT-2026-004</span>
+                  <td class="text-center">
+                    <button type="button" class="btn-table-comment" onclick="showToast('Komentar LPPM')">Komentar</button>
                   </td>
-                  <td>Fundamental</td>
-                  <td>2026</td>
-                  <td>
-                    <span class="badge-status-pill" style="background:#f1f5f9; color:#475569;">Draft</span>
+                  <td class="text-center">
+                    <button type="button" class="btn-table-comment" onclick="showToast('Komentar Reviewer')">Komentar</button>
                   </td>
-                  <td>
-                    <a href="usulan-baru.html" class="action-link-arrow">Lanjutkan &rarr;</a>
+                  <td class="text-center">
+                    <button type="button" class="btn-table-view" title="Lihat Detail Proposal" onclick="showToast('Membuka detail usulan...')">
+                      <i class="fa-regular fa-eye"></i>
+                    </button>
                   </td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
-      </div>
-
-      <!-- RIGHT COLUMN: PROFIL & CALL TO ACTION -->
-      <div class="grid-col-right">
-
-        <!-- PROFIL SAYA (COMPACT) -->
-        <div class="sidebar-panel-card">
-          <div class="panel-navy-header">
-            <h3>Profil Saya</h3>
-            <button class="panel-header-btn" title="Edit Profil">
-              <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
-            </button>
-          </div>
-
-          <div class="profile-panel-body">
-            <div class="profile-avatar-row" style="margin-bottom: 0;">
-              <div class="avatar-large-circle">
-                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <div class="profile-info-text">
-                <h4>Yoshida Sary</h4>
-                <p>Sistem Informasi</p>
-                <p>Universitas Muhammadiyah Sumatera Utara</p>
-                <span class="status-active-pill">Aktif</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- MULAI PROPOSAL BARU CTA CARD (MATCHES IMAGE 3) -->
-        <div class="new-proposal-cta-card">
-          <h4>Mulai proposal baru</h4>
-          <p>Gunakan wizard pengajuan agar proposal lebih mudah dilengkapi sesuai skema RisetMu &amp; LPPM UMSU.</p>
-          <a href="usulan-baru.html" class="btn-primary-blue" style="justify-content: center; padding: 10px;">
-            Ajukan Penelitian &rarr;
-          </a>
-        </div>
-
       </div>
 
     </div>

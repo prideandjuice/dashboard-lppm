@@ -12,8 +12,8 @@
   <!-- Font Awesome 6 Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="css/style.css?v=13">
-  <link rel="stylesheet" href="css/penelitian.css?v=13">
+  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/penelitian.css?v=16">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 </head>
 <body>
@@ -425,25 +425,101 @@
         </div>
       </div>
 
-      <!-- PANEL 3: PERIODE PENELITIAN -->
-      <div class="accordion-panel">
-        <div class="accordion-header">
-          <h4>Periode Penelitian</h4>
+      <!-- PANEL 3: PERIODE PENELITIAN (REVISED SENIOR-FRIENDLY & ELEGANT) -->
+      <div class="accordion-panel period-accordion-panel">
+        <div class="accordion-header period-header">
+          <div class="header-title-group">
+            <div class="header-icon-circle">
+              <i class="fa-solid fa-calendar-check"></i>
+            </div>
+            <div>
+              <h4 class="period-panel-title">Periode Penelitian</h4>
+              <p class="period-panel-subtitle">Jadwal resmi pembukaan dan batas akhir pengajuan proposal</p>
+            </div>
+          </div>
           <svg class="accordion-toggle-icon" viewBox="0 0 24 24"><path d="M7 14l5-5 5 5z"/></svg>
         </div>
-        <div class="accordion-body">
-          <div class="period-date-box">
-            <div><strong>Periode :</strong> 2026/2027</div>
-            <div><strong>Batch :</strong> 10 (Hibah Internal LPPM UMSU &amp; RisetMu)</div>
-            <div><strong>Buka :</strong> <span class="open-text">Selasa, 26 Agustus 2026</span></div>
-            <div><strong>Tutup :</strong> <span class="close-text">Selasa, 13 Oktober 2026</span></div>
+
+        <div class="accordion-body period-body">
+
+          <!-- Alert Status: Sedang Dibuka (Sangat Jelas & Menenangkan) -->
+          <div class="period-status-alert">
+            <div class="alert-icon-wrap">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <div class="alert-text-wrap">
+              <div class="alert-top-row">
+                <span class="status-badge-live">Status: Pendaftaran Dibuka</span>
+                <span class="status-period-sub">Periode Berjalan</span>
+              </div>
+              <p class="alert-message">
+                Saat ini pengajuan proposal penelitian tahun akademik <strong>2026/2027</strong> sedang aktif dibuka. Silakan lengkapi usulan Anda dengan tenang sebelum batas waktu penutupan.
+              </p>
+            </div>
           </div>
 
-          <div style="display: flex; justify-content: flex-end; margin-top: 1rem;">
-            <button class="btn-wizard-next" id="btnNextWizard" type="button">
+          <!-- Grid Kartu Informasi (2 Kolom Rapi & Huruf Besar) -->
+          <div class="period-cards-grid">
+            
+            <!-- Kolom 1: Informasi Gelombang & Hibah -->
+            <div class="period-info-card">
+              <div class="card-top-header">
+                <span class="card-label"><i class="fa-solid fa-graduation-cap"></i> Tahun Akademik</span>
+                <span class="pill-batch-number">Batch 10</span>
+              </div>
+              <div class="card-main-highlight">
+                <div class="highlight-year">2026 / 2027</div>
+                <div class="highlight-desc">
+                  <i class="fa-solid fa-award"></i>
+                  <span>Hibah Internal LPPM UMSU &amp; RisetMu</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Kolom 2: Jadwal Buka & Tutup yang Sangat Tegas & Kontras -->
+            <div class="period-schedule-card">
+              
+              <!-- Item 1: Tanggal Mulai Buka -->
+              <div class="schedule-item item-open">
+                <div class="schedule-icon-box box-open">
+                  <i class="fa-regular fa-calendar-plus"></i>
+                </div>
+                <div class="schedule-details">
+                  <span class="schedule-label">Tanggal Mulai Pendaftaran:</span>
+                  <div class="schedule-date date-open">Selasa, 26 Agustus 2026</div>
+                </div>
+              </div>
+
+              <div class="schedule-divider-line"></div>
+
+              <!-- Item 2: Batas Akhir Penutupan -->
+              <div class="schedule-item item-close">
+                <div class="schedule-icon-box box-close">
+                  <i class="fa-solid fa-calendar-xmark"></i>
+                </div>
+                <div class="schedule-details">
+                  <span class="schedule-label">Batas Akhir Penutupan (Deadline):</span>
+                  <div class="schedule-date date-close">Selasa, 13 Oktober 2026</div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Catatan Ramah Dosen Senior -->
+          <div class="period-help-note">
+            <i class="fa-solid fa-circle-info"></i>
+            <span><strong>Petunjuk:</strong> Pastikan seluruh data identitas dan dokumen usulan Anda telah terisi dengan lengkap sebelum melanjutkan ke tahap berikutnya.</span>
+          </div>
+
+          <!-- Tombol Selanjutnya (Besar, Jelas, & Nyaman Ditekan) -->
+          <div class="period-action-footer">
+            <button class="btn-wizard-next btn-senior-friendly" id="btnNextWizard" type="button">
               <span>Selanjutnya &rarr;</span>
             </button>
           </div>
+
         </div>
       </div>
 

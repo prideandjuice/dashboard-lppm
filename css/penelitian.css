@@ -65,7 +65,7 @@ body {
    PAGE: PENELITIAN.HTML (DAFTAR USULAN)
    -------------------------------------------------------------------------- */
 .penelitian-header-banner {
-  background: linear-gradient(90deg, #184cc4 0%, #1745b1 50%, #153c99 100%);
+  background: #0284c7;
   border-radius: 12px;
   padding: 1.8rem 2.2rem;
   color: #ffffff;
@@ -332,6 +332,109 @@ body {
 .action-link-arrow:hover {
   text-decoration: underline;
   color: #1e40af;
+}
+
+/* =========================================
+   TABLE SCREENSHOT STYLES (MATCHES IMAGE 1)
+   ========================================= */
+.lppm-bordered-table {
+  border: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+.lppm-bordered-table th,
+.lppm-bordered-table td {
+  border: 1px solid #edf2f7;
+  padding: 12px 14px;
+  font-size: 0.81rem;
+}
+
+.lppm-bordered-table th {
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 700;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.lppm-bordered-table tr:hover {
+  background-color: #fafbfc;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.font-semibold {
+  font-weight: 600;
+}
+
+.cell-ketua .ketua-name {
+  font-weight: 700;
+  color: #1e293b;
+  font-size: 0.81rem;
+  letter-spacing: -0.01em;
+}
+
+.cell-ketua .ketua-nidn {
+  color: #475569;
+  font-size: 0.77rem;
+  margin-top: 2px;
+}
+
+.cell-judul {
+  font-size: 0.81rem;
+  line-height: 1.45;
+  color: #1e293b;
+  font-weight: 500;
+}
+
+.badge-status-rejected {
+  display: inline-block;
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.btn-table-comment {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.15s ease;
+}
+
+.btn-table-comment:hover {
+  background-color: #1e40af;
+}
+
+.btn-table-view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: 1px solid #93c5fd;
+  background-color: #ffffff;
+  color: #2563eb;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  font-size: 0.85rem;
+}
+
+.btn-table-view:hover {
+  background-color: #eff6ff;
+  border-color: #3b82f6;
 }
 
 .new-proposal-cta-card {
@@ -727,7 +830,7 @@ body {
 
 .dashboard-grid-layout {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 340px;
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   align-items: start;
 }
@@ -988,7 +1091,7 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--primary-blue, #1a56db);
+  background: #ffffffff;
   border-radius: 3px 3px 0 0;
 }
 
@@ -1035,7 +1138,7 @@ body {
   background: #ffffff;
   border: 1px solid var(--border-color, #cbd5e1);
   border-radius: 8px;
-  box-shadow: var(--shadow-lg, 0 10px 25px rgba(0,0,0,0.1));
+  box-shadow: var(--shadow-lg, 0 10px 25px rgba(0, 0, 0, 0.1));
   min-width: 170px;
   display: none;
   flex-direction: column;
@@ -1047,7 +1150,8 @@ body {
   display: flex;
 }
 
-.dropdown-menu-list button, .dropdown-menu-list a {
+.dropdown-menu-list button,
+.dropdown-menu-list a {
   padding: 9px 14px;
   font-size: 0.8rem;
   text-decoration: none;
@@ -1063,7 +1167,8 @@ body {
   font-weight: 600;
 }
 
-.dropdown-menu-list button:hover, .dropdown-menu-list a:hover {
+.dropdown-menu-list button:hover,
+.dropdown-menu-list a:hover {
   background: #f1f5f9;
   color: var(--primary-blue, #1a56db);
 }
@@ -1194,3 +1299,327 @@ body {
   color: #ef4444;
   font-weight: 800;
 }
+
+/* ==========================================================================
+   SENIOR-FRIENDLY & ACCESSIBLE PERIODE PENELITIAN PANEL (PROPORTIONAL & COMPACT)
+   Kenyamanan visual, kontras pas, dan ukuran seimbang tidak terlalu besar
+   ========================================================================== */
+
+.period-accordion-panel {
+  border: 1.5px solid #cbd5e1;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.04);
+  overflow: hidden;
+  transition: all 0.2s ease;
+}
+
+.period-header {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  padding: 0.75rem 1.25rem;
+  border-radius: 6px 6px 0 0;
+}
+
+.period-header:hover {
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+}
+
+.header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header-icon-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.period-panel-title {
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1px;
+}
+
+.period-panel-subtitle {
+  font-size: 0.76rem;
+  color: rgba(255, 255, 255, 0.88);
+  font-weight: 500;
+  margin: 0;
+}
+
+.period-body {
+  padding: 1.1rem 1.35rem;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+/* Status Alert (Compact) */
+.period-status-alert {
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  padding: 8px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.alert-icon-wrap {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.alert-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.alert-top-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.status-badge-live {
+  background: #16a34a;
+  color: #ffffff;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 10px;
+  border-radius: 12px;
+}
+
+.status-period-sub {
+  font-size: 0.72rem;
+  color: #15803d;
+  font-weight: 600;
+}
+
+.alert-message {
+  font-size: 0.82rem;
+  line-height: 1.4;
+  color: #14532d;
+  margin: 0;
+}
+
+/* 2-Column Info Grid */
+.period-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.35fr;
+  gap: 0.9rem;
+}
+
+@media (max-width: 860px) {
+  .period-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Card 1: Batch & Year */
+.period-info-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.card-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-label {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.pill-batch-number {
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 700;
+  font-size: 0.74rem;
+  padding: 2px 10px;
+  border-radius: 12px;
+  border: 1px solid #bfdbfe;
+}
+
+.highlight-year {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.01em;
+  margin-top: 2px;
+}
+
+.highlight-desc {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #334155;
+}
+
+.highlight-desc i {
+  color: #d97706;
+}
+
+/* Card 2: Open & Close Dates */
+.period-schedule-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.schedule-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.schedule-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.box-open {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+
+.box-close {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.schedule-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.schedule-label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.schedule-date.date-open {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #15803d;
+}
+
+.schedule-date.date-close {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #dc2626;
+}
+
+.schedule-divider-line {
+  height: 1px;
+  background: #f1f5f9;
+}
+
+/* Helpful Note */
+.period-help-note {
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  padding: 7px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: #92400e;
+}
+
+.period-help-note i {
+  font-size: 0.92rem;
+  color: #d97706;
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+
+/* Footer & Big Button */
+.period-action-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.2rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.btn-senior-friendly {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  color: #ffffff;
+  border: none;
+  padding: 9px 24px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.25);
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-senior-friendly:hover {
+  background: linear-gradient(135deg, #047857 0%, #059669 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+}
+
+.btn-senior-friendly:active {
+  transform: translateY(0);
+}
