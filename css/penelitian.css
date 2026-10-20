@@ -847,3 +847,173 @@
   background: #059669;
   transform: translateY(-1px);
 }
+
+
+/* =========================================
+   PAGE CONTAINER & 2-COLUMN GRID LAYOUT
+========================================= */
+.app-container {
+  max-width: 1420px;
+  margin: 1.5rem auto;
+  padding: 0 1.5rem 3rem 1.5rem;
+}
+
+.dashboard-grid-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 340px;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.grid-col-left {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.grid-col-right {
+  min-width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+@media (max-width: 992px) {
+  .dashboard-grid-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================
+   SIDEBAR PANEL CARD (PROFIL SAYA)
+========================================= */
+.sidebar-panel-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  overflow: hidden;
+}
+
+.panel-navy-header {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.panel-navy-header h3 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 0;
+}
+
+.panel-header-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.panel-header-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.panel-header-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: currentColor;
+}
+
+.profile-panel-body {
+  padding: 18px 20px;
+}
+
+.profile-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.avatar-large-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.avatar-large-circle svg {
+  width: 32px;
+  height: 32px;
+  fill: currentColor;
+}
+
+.profile-info-text h4 {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin-bottom: 2px;
+}
+
+.profile-info-text p {
+  font-size: 0.72rem;
+  color: #64748b;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.status-active-pill {
+  display: inline-block;
+  background: #dcfce7;
+  color: #15803d;
+  font-size: 0.68rem;
+  font-weight: 800;
+  padding: 2px 10px;
+  border-radius: 12px;
+  margin-top: 5px;
+}
+
+/* =========================================
+   SITE FOOTER (FOR PENELITIAN & USULAN-BARU)
+========================================= */
+.site-footer {
+  border-top: 1px solid #e2e8f0;
+  background: #ffffff;
+  padding: 1.25rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.76rem;
+  color: #64748b;
+  margin-top: 3rem;
+}
+
+.site-footer .footer-links {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.site-footer .footer-links a {
+  color: #64748b;
+  text-decoration: none;
+}
+
+.site-footer .footer-links a:hover {
+  color: #1a56db;
+}
