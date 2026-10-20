@@ -228,9 +228,7 @@ function initTableFilters() {
         }
       }
 
-      if (typeof showToast === 'function') {
-        showToast('Filter: ' + tab.textContent.trim());
-      }
+
     });
   });
 }
