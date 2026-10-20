@@ -431,16 +431,19 @@
   font-weight: 700;
 }
 
+.badge-status-pill.review,
 .badge-warning-review {
   background: #fef3c7;
   color: #b45309;
 }
 
+.badge-status-pill.done,
 .badge-success-done {
   background: #e0f2fe;
   color: #0369a1;
 }
 
+.badge-status-pill.draft,
 .badge-secondary-draft {
   background: #f1f5f9;
   color: #475569;

@@ -4,66 +4,181 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pengajuan Usulan Baru - LPPM UMSU &amp; RisetMu</title>
-  <link rel="stylesheet" href="css/style.css?v=7">
-  <link rel="stylesheet" href="css/penelitian.css?v=7">
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=8">
+  <link rel="stylesheet" href="css/penelitian.css?v=8">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
 </head>
 <body>
 
-  <!-- TOP NAVBAR -->
-  <header class="top-navbar">
-    <div class="nav-left-section">
-      <a class="brand-lppm-link" href="index.html">
-        <div class="brand-badge-u">U</div>
-        <div class="brand-text-block">
-          <span class="brand-title">LPPM UMSU</span>
-          <span class="brand-tagline">Riset · Inovasi · Pengabdian · Dampak</span>
+  <!-- TOP HEADER / NAVBAR (EXACT MATCH IMAGE 1) -->
+  <header class="top-header">
+    <div class="header-container">
+      <!-- Logo LPPM -->
+      <a href="index.html" class="brand-logo" id="brand-logo" title="LPPM Home">
+        <div class="brand-name">
+          <span class="logo-riset">L<span class="logo-bulb-i">P</span>P</span><span class="logo-mu">M</span>
         </div>
       </a>
 
-      <nav class="main-nav-links">
-        <a class="nav-item" href="index.html">Dashboard</a>
-        <a class="nav-item active" href="penelitian.html">Penelitian</a>
-        <a class="nav-item" href="javascript:void(0)" onclick="showToast('Menu Pengabdian')">Pengabdian</a>
-        <a class="nav-item" href="javascript:void(0)" onclick="showToast('Menu Pendampingan')">Pendampingan</a>
-        <a class="nav-item" href="javascript:void(0)" onclick="showToast('Menu Luaran')">Luaran</a>
-        <a class="nav-item" href="javascript:void(0)" onclick="showToast('Panduan Penelitian 2026')">Panduan</a>
-      </nav>
-    </div>
+      <!-- Right Action Items -->
+      <div class="header-actions">
+        <!-- Academic Year Dropdown -->
+        <div class="dropdown-wrapper">
+          <button class="pill-btn nav-dropdown-btn" id="yearDropdownBtn" aria-expanded="false" title="Pilih Periode">
+            <i class="fa-regular fa-calendar-days"></i>
+            <span id="selectedYear">2026/2027</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu" id="yearDropdownMenu">
+            <div class="dropdown-item active" data-year="2026/2027"><i class="fa-solid fa-check"></i> 2026/2027 (Aktif)</div>
+            <div class="dropdown-item" data-year="2025/2026">2025/2026</div>
+            <div class="dropdown-item" data-year="2024/2025">2024/2025</div>
+            <div class="dropdown-item" data-year="2023/2024">2023/2024</div>
+          </div>
+        </div>
 
-    <div class="nav-right-controls">
-      <div class="dropdown-relative">
-        <button class="control-pill-btn" id="btnYearDropdown" type="button">
-          <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/></svg>
-          <span id="currentYearText">2026/2027</span>
-          <svg viewBox="0 0 24 24" width="11" height="11"><path d="M7 10l5 5 5-5z"/></svg>
-        </button>
-      </div>
+        <!-- Role Dropdown -->
+        <div class="dropdown-wrapper">
+          <button class="pill-btn nav-dropdown-btn" id="roleDropdownBtn" aria-expanded="false" title="Ganti Peran">
+            <i class="fa-regular fa-user"></i>
+            <span id="selectedRole">DOSEN</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu" id="roleDropdownMenu">
+            <div class="dropdown-item active" data-role="DOSEN"><i class="fa-solid fa-check"></i> DOSEN</div>
+            <div class="dropdown-item" data-role="REVIEWER">REVIEWER</div>
+            <div class="dropdown-item" data-role="PENGUSUL">PENGUSUL</div>
+            <div class="dropdown-item" data-role="ADMIN LPPM">ADMIN LPPM</div>
+          </div>
+        </div>
 
-      <div class="dropdown-relative">
-        <button class="control-pill-btn" id="btnRoleDropdown" type="button">
-          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
-          <span id="currentRoleText">DOSEN</span>
-          <svg viewBox="0 0 24 24" width="11" height="11"><path d="M7 10l5 5 5-5z"/></svg>
-        </button>
-      </div>
+        <!-- Notification Bell -->
+        <div class="dropdown-wrapper">
+          <button class="icon-btn notif-btn" id="notifBtn" title="Notifikasi">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-badge-dot"></span>
+          </button>
+          <div class="dropdown-menu notif-menu" id="notifMenu">
+            <div class="notif-header">
+              <span>Pemberitahuan</span>
+              <span class="notif-tag">2 Baru</span>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item unread">
+                <div class="notif-icon bg-blue"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="notif-text">
+                  <strong>Pengumuman Pendanaan 2026</strong>
+                  <p>Administrasi pendanaan proposal penelitian dan PKM telah resmi diumumkan.</p>
+                  <small>Hari ini, 08:30 WIB</small>
+                </div>
+              </div>
+              <div class="notif-item unread">
+                <div class="notif-icon bg-green"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="notif-text">
+                  <strong>Proposal Diterima</strong>
+                  <p>Pengabdian Kemitraan Masyarakat Ranting Aisyiyah telah disetujui.</p>
+                  <small>Kemarin, 14:15 WIB</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-      <button class="icon-bell-btn" type="button" title="Notifikasi" onclick="showToast('Notifikasi hibah')">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-          <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-        </svg>
-      </button>
-
-      <div class="user-profile-widget" id="btnUserDropdown">
-        <div class="avatar-circle-sm">YS</div>
-        <div class="user-meta-info">
-          <span class="user-meta-name">YOSHIDA SARY</span>
-          <span class="user-meta-role">Dosen</span>
+        <!-- User Profile Pill -->
+        <div class="dropdown-wrapper">
+          <button class="user-profile-btn" id="userProfileBtn" aria-expanded="false">
+            <div class="user-avatar-circle">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <span class="user-name">YOSHIDA SARY</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu user-menu" id="userMenu">
+            <div class="user-menu-header">
+              <strong>Yoshida Sary, M.Kom.</strong>
+              <small>NIDN: 0123456789</small>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="index.html#profil" class="dropdown-item"><i class="fa-regular fa-id-card"></i> Profil Lengkap</a>
+            <a href="#" class="dropdown-item" onclick="showToast('Fitur Pengaturan Akun')"><i class="fa-solid fa-sliders"></i> Pengaturan Akun</a>
+            <a href="#" class="dropdown-item" onclick="showToast('Fitur Ganti Sandi')"><i class="fa-solid fa-key"></i> Ganti Password</a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item text-danger" onclick="showToast('Sesi tetap aktif')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</a>
+          </div>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- SUB NAVIGATION MENU (EXACT MATCH IMAGE 1) -->
+  <nav class="sub-nav">
+    <div class="sub-nav-container">
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link" id="navDashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item has-dropdown active">
+          <a href="penelitian.html" class="nav-link">
+            <i class="fa-solid fa-flask"></i>
+            <span>Penelitian</span>
+            <i class="fa-solid fa-chevron-down sub-arrow"></i>
+          </a>
+          <ul class="sub-dropdown">
+            <li><a href="penelitian.html">Usulan Baru</a></li>
+            <li><a href="penelitian.html">Riwayat Usulan Penelitian</a></li>
+            <li><a href="#" onclick="showToast('Menu Laporan Kemajuan')">Laporan Kemajuan</a></li>
+            <li><a href="#" onclick="showToast('Menu Laporan Akhir')">Laporan Akhir</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <span>Pengabdian</span>
+            <i class="fa-solid fa-chevron-down sub-arrow"></i>
+          </a>
+          <ul class="sub-dropdown">
+            <li><a href="#" onclick="showToast('Menu Usulan Baru Pengabdian')">Usulan Baru Pengabdian</a></li>
+            <li><a href="#" onclick="showToast('Menu Riwayat Pengabdian')">Riwayat Usulan Pengabdian</a></li>
+            <li><a href="#" onclick="showToast('Menu Laporan Kemajuan')">Laporan Kemajuan</a></li>
+            <li><a href="#" onclick="showToast('Menu Laporan Akhir')">Laporan Akhir</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#" class="nav-link">
+            <i class="fa-regular fa-file-lines"></i>
+            <span>Pendampingan</span>
+            <i class="fa-solid fa-chevron-down sub-arrow"></i>
+          </a>
+          <ul class="sub-dropdown">
+            <li><a href="#" onclick="showToast('Menu Pendampingan Artikel Ilmiah')">Pendampingan Artikel</a></li>
+            <li><a href="#" onclick="showToast('Menu Pendampingan Proposal Hibah')">Pendampingan Proposal</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-user-check"></i>
+            <span>Pengajuan Reviewer</span>
+            <i class="fa-solid fa-chevron-down sub-arrow"></i>
+          </a>
+          <ul class="sub-dropdown">
+            <li><a href="#" onclick="showToast('Pendaftaran Reviewer Nasional')">Formulir Pengajuan Reviewer</a></li>
+            <li><a href="#" onclick="showToast('Status Pengajuan Reviewer')">Status Seleksi Reviewer</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
 
   <!-- MAIN CONTAINER -->
   <main class="app-container">
