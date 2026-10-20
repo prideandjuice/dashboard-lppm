@@ -276,6 +276,7 @@ function initStepper() {
 // =========================================================
 // DYNAMIC & EDITABLE RESEARCH TAXONOMY & SCHEME (RISETMU)
 // =========================================================
+
 const researchTaxonomy = {
   bidangFokus: {
     "Teknologi Informasi dan Komunikasi": {
@@ -298,152 +299,161 @@ const researchTaxonomy = {
         ],
         "Sistem Informasi & Tata Kelola Digital": [
           "Arsitektur Enterprise Sistem Informasi Kampus",
-          "Sistem Informasi Desa & Tata Kelola Smart Governance",
-          "E-Learning Adaptif Berbasis Rekomendasi Algoritmik"
+          "Sistem Pendukung Keputusan Berbasis Big Data",
+          "Digitalisasi Layanan Publik Pemerintah Daerah"
         ]
       }
     },
-    "Kesehatan, Obat dan Farmasi": {
+    "Ketahanan Pangan dan Pertanian": {
       temas: {
-        "Teknologi Farmasi dan Formulasi Bahan Alam": [
-          "Uji efikasi ekstrak herbal lokal",
-          "Formulasi sediaan nano-partikel obat tradisional"
+        "Teknologi Pasca Panen Berkelanjutan": [
+          "Optimasi rantai pasok komoditas pangan lokal",
+          "Pengolahan pangan fungsional berbasis umbi-umbian",
+          "Pengawetan hasil panen ramah lingkungan"
         ],
-        "Sistem Informasi Medis dan Kesehatan Masyarakat": [
-          "Deteksi dini stunting pada balita berbasis tele-health",
-          "Sistem triase darurat klinik pintar"
+        "Bioteknologi Tanaman Pangan & Hortikultura": [
+          "Rekayasa varietas padi tahan genangan dan kekeringan",
+          "Pupuk hayati mikoriza untuk lahan kritis",
+          "Pengendalian hama terpadu hayati"
         ]
       }
     },
-    "Pangan, Pertanian dan Perkebunan": {
+    "Kesehatan, Farmasi dan Kedokteran": {
       temas: {
-        "Ketahanan Pangan dan Budidaya Presisi": [
-          "Varietas bibit padi tahan kekeringan",
-          "Manajemen rantai pasok komoditas kopi Sumatera"
+        "Pengembangan Obat Bahan Alam Tropis": [
+          "Standardisasi ekstrak herbal untuk antidiabetes",
+          "Isolasi senyawa aktif antibakteri dari flora lokal",
+          "Uji klinis fitofarmaka antiinflamasi"
+        ],
+        "Sistem Informasi Kesehatan Masyarakat": [
+          "Surveilans digital stunting dan gizi balita",
+          "Telemedicine terintegrasi untuk daerah 3T",
+          "Manajemen data rekam medis elektronik terpusat"
         ]
       }
     },
-    "Sosial Humaniora dan Pendidikan": {
+    "Sosial Humaniora & Pendidikan Berkemajuan": {
       temas: {
-        "Inovasi Pembelajaran Digital dan Karakter": [
-          "Pengembangan model gamifikasi media ajar",
-          "Integrasi nilai Al-Islam dan Kemuhammadiyahan dalam kurikulum digital"
+        "Inovasi Pembelajaran Digital": [
+          "Media augmented reality untuk pembelajaran sains",
+          "Model asesmen kurikulum merdeka berbasis AI",
+          "Pengembangan platform micro-learning adaptif"
+        ],
+        "Pemberdayaan Ekonomi Komunitas 'Aisyiyah": [
+          "Digital marketing dan inkubasi UMKM perempuan",
+          "Penguatan ketahanan keluarga sakinah dan literasi finansial",
+          "Model koperasi syariah berbasis komunitas ranting"
+        ]
+      }
+    },
+    "Energi Baru Terbarukan & Lingkungan": {
+      temas: {
+        "Pemanfaatan Energi Surya & Biomassa": [
+          "Sistem Pembangkit Listrik Tenaga Surya Atap Kampus",
+          "Konversi limbah kelapa sawit menjadi biofuel",
+          "Mikrohidro untuk penerangan pedesaan"
+        ],
+        "Pengelolaan Lingkungan & Kebencanaan": [
+          "Sistem peringatan dini banjir berbasis sensor IoT",
+          "Pengolahan air limbah industri ramah lingkungan",
+          "Mitigasi dampak perubahan iklim pada pesisir"
         ]
       }
     }
-  }
+  },
+  rumpunIlmu: {
+    "ILMU TEKNIK": {
+      level2: {
+        "TEKNIK ELEKTRO DAN INFORMATIKA": [
+          "Sistem Informasi",
+          "Teknik Informatika",
+          "Ilmu Komputer",
+          "Rekayasa Perangkat Lunak",
+          "Teknik Elektro",
+          "Teknik Telekomunikasi"
+        ],
+        "TEKNIK SIPIL DAN PERENCANAAN": [
+          "Teknik Sipil",
+          "Arsitektur",
+          "Perencanaan Wilayah dan Kota"
+        ],
+        "TEKNIK MESIN DAN INDUSTRI": [
+          "Teknik Mesin",
+          "Teknik Industri",
+          "Teknik Material"
+        ]
+      }
+    },
+    "ILMU KESEHATAN": {
+      level2: {
+        "KEDOKTERAN DAN KESEHATAN": [
+          "Pendidikan Dokter",
+          "Kesehatan Masyarakat",
+          "Ilmu Keperawatan",
+          "Farmasi Klinis",
+          "Kebidanan"
+        ]
+      }
+    },
+    "ILMU EKONOMI": {
+      level2: {
+        "EKONOMI, MANAJEMEN DAN BISNIS": [
+          "Manajemen",
+          "Akuntansi",
+          "Ekonomi Pembangunan",
+          "Ekonomi Islam / Syariah",
+          "Kewirausahaan"
+        ]
+      }
+    },
+    "ILMU PENDIDIKAN": {
+      level2: {
+        "PENDIDIKAN DAN KEGURUAN": [
+          "Pendidikan Guru Sekolah Dasar (PGSD)",
+          "Pendidikan Bahasa Indonesia",
+          "Pendidikan Matematika",
+          "Pendidikan Agama Islam (PAI)",
+          "Teknologi Pendidikan"
+        ]
+      }
+    },
+    "ILMU SOSIAL & HUMANIORA": {
+      level2: {
+        "ILMU SOSIAL DAN POLITIK": [
+          "Ilmu Komunikasi",
+          "Administrasi Publik",
+          "Hubungan Internasional",
+          "Kesejahteraan Sosial"
+        ],
+        "ILMU HUKUM": [
+          "Ilmu Hukum Perdata",
+          "Hukum Pidana",
+          "Hukum Tata Negara & Administrasi"
+        ]
+      }
+    }
+  },
+  prioritasRiset: [
+    "Digital Economy",
+    "Green Economy & Transisi Energi",
+    "Blue Economy & Kemaritiman",
+    "Kemandirian Kesehatan & Farmasi",
+    "Ketahanan Pangan Berkelanjutan",
+    "Pariwisata & Industri Kreatif",
+    "Penguatan Karakter, Moderasi & Kebangsaan"
+  ]
 };
 
-let selectedBidang = "Teknologi Informasi dan Komunikasi";
-let selectedTema = "Pengembangan sistem berbasis kecerdasan buatan";
-let selectedTopik = "Machine Learning untuk klasifikasi dan prediksi";
-
-function initDynamicResearchFields() {
-  const triggerBidang = document.getElementById('triggerBidangFokus');
-  const triggerTema = document.getElementById('triggerTema');
-  const triggerTopik = document.getElementById('triggerTopik');
-
-  if (!triggerBidang || !triggerTema || !triggerTopik) return;
-
-  setupTagDropdown('triggerBidangFokus', 'dropdownBidangFokus', 'holderBidangFokus', () => {
-    return Object.keys(researchTaxonomy.bidangFokus);
-  }, (selectedVal) => {
-    selectedBidang = selectedVal;
-    const temas = Object.keys(researchTaxonomy.bidangFokus[selectedBidang]?.temas || {});
-    selectedTema = temas[0] || '';
-    renderTagBadge('holderTema', selectedTema, () => triggerTema.click());
-
-    const topiks = researchTaxonomy.bidangFokus[selectedBidang]?.temas[selectedTema] || [];
-    selectedTopik = topiks[0] || '';
-    renderTagBadge('holderTopik', selectedTopik, () => triggerTopik.click());
-  });
-
-  setupTagDropdown('triggerTema', 'dropdownTema', 'holderTema', () => {
-    return Object.keys(researchTaxonomy.bidangFokus[selectedBidang]?.temas || {});
-  }, (selectedVal) => {
-    selectedTema = selectedVal;
-    const topiks = researchTaxonomy.bidangFokus[selectedBidang]?.temas[selectedTema] || [];
-    selectedTopik = topiks[0] || '';
-    renderTagBadge('holderTopik', selectedTopik, () => triggerTopik.click());
-  });
-
-  setupTagDropdown('triggerTopik', 'dropdownTopik', 'holderTopik', () => {
-    return researchTaxonomy.bidangFokus[selectedBidang]?.temas[selectedTema] || [];
-  }, (selectedVal) => {
-    selectedTopik = selectedVal;
-  });
-
-  renderTagBadge('holderBidangFokus', selectedBidang, () => triggerBidang.click());
-  renderTagBadge('holderTema', selectedTema, () => triggerTema.click());
-  renderTagBadge('holderTopik', selectedTopik, () => triggerTopik.click());
-}
-
-function renderTagBadge(holderId, textVal, onRemove) {
-  const holder = document.getElementById(holderId);
-  if (!holder) return;
-  holder.innerHTML = '';
-
-  if (!textVal) {
-    const ph = document.createElement('span');
-    ph.className = 'tag-placeholder';
-    ph.textContent = '-- Pilih Salah Satu --';
-    holder.appendChild(ph);
-    return;
-  }
-
-  const badge = document.createElement('span');
-  badge.className = 'tag-badge';
-  badge.innerHTML = `
-    <span>${textVal}</span>
-    <span class="remove-tag" title="Ganti pilihan">&times;</span>
-  `;
-
-  badge.querySelector('.remove-tag').addEventListener('click', (e) => {
-    e.stopPropagation();
-    if (onRemove) onRemove();
-  });
-
-  holder.appendChild(badge);
-}
-
-function setupTagDropdown(triggerId, dropdownId, holderId, getOptionsFn, onSelectFn) {
-  const trigger = document.getElementById(triggerId);
-  const dropdown = document.getElementById(dropdownId);
-  const box = trigger ? trigger.closest('.dynamic-select-tag-box') : null;
-
-  if (!trigger || !dropdown || !box) return;
-
-  function renderOptions() {
-    dropdown.innerHTML = '';
-    const options = getOptionsFn();
-    options.forEach(opt => {
-      const item = document.createElement('div');
-      item.className = 'dynamic-option-item';
-      item.textContent = opt;
-
-      item.addEventListener('click', (e) => {
-        e.stopPropagation();
-        renderTagBadge(holderId, opt, () => trigger.click());
-        onSelectFn(opt);
-        closeAllTagDropdowns();
-      });
-
-      dropdown.appendChild(item);
-    });
-  }
-
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = dropdown.classList.contains('open');
-    closeAllTagDropdowns();
-    if (!isOpen) {
-      renderOptions();
-      dropdown.classList.add('open');
-      trigger.classList.add('open');
-      box.classList.add('open');
-    }
-  });
-}
+// Current active state
+let activeResearchState = {
+  bidang: "Teknologi Informasi dan Komunikasi",
+  tema: "Pengembangan sistem berbasis kecerdasan buatan",
+  topik: "Pengembangan aplikasi sistem cerdas",
+  rumpun1: "ILMU TEKNIK",
+  rumpun2: "TEKNIK ELEKTRO DAN INFORMATIKA",
+  rumpun3: "Sistem Informasi",
+  prioritas: "Digital Economy"
+};
 
 function closeAllTagDropdowns() {
   document.querySelectorAll('.dynamic-options-dropdown').forEach(d => d.classList.remove('open'));
@@ -451,6 +461,309 @@ function closeAllTagDropdowns() {
   document.querySelectorAll('.dynamic-select-tag-box').forEach(b => b.classList.remove('open'));
 }
 
-document.addEventListener('click', () => {
-  closeAllTagDropdowns();
-});
+function initDynamicResearchFields() {
+  // Global click listener to close dropdowns when clicking outside
+  document.addEventListener('click', closeAllTagDropdowns);
+
+  // Setup Skim Penelitian selector
+  const selectSkim = document.getElementById('selectSkimPenelitian');
+  if (selectSkim) {
+    selectSkim.addEventListener('change', (e) => {
+      showToast(`Skim terpilih: ${e.target.value} (Plafon hingga Rp 35.000.000)`);
+    });
+  }
+
+  // 1. Setup Bidang Fokus Penelitian
+  setupCustomSelect('selectBidangFokus', 
+    () => Object.keys(researchTaxonomy.bidangFokus), 
+    (val) => {
+      if (!val) {
+        activeResearchState.bidang = '';
+        activeResearchState.tema = '';
+        activeResearchState.topik = '';
+        renderAllDynamicFields();
+        showToast('Bidang Fokus dikosongkan', 'info');
+        return;
+      }
+      activeResearchState.bidang = val;
+      const availableTemas = Object.keys(researchTaxonomy.bidangFokus[val]?.temas || {});
+      activeResearchState.tema = availableTemas[0] || '';
+      const availableTopiks = researchTaxonomy.bidangFokus[val]?.temas[activeResearchState.tema] || [];
+      activeResearchState.topik = availableTopiks[0] || '';
+      renderAllDynamicFields();
+      showToast(`Bidang Fokus: ${val}`);
+    },
+    () => activeResearchState.bidang
+  );
+
+  // 2. Setup Tema Penelitian
+  setupCustomSelect('selectTemaPenelitian', 
+    () => {
+      if (activeResearchState.bidang && researchTaxonomy.bidangFokus[activeResearchState.bidang]) {
+        return Object.keys(researchTaxonomy.bidangFokus[activeResearchState.bidang].temas);
+      }
+      const allTemas = [];
+      Object.values(researchTaxonomy.bidangFokus).forEach(b => {
+        allTemas.push(...Object.keys(b.temas));
+      });
+      return allTemas;
+    }, 
+    (val) => {
+      if (!val) {
+        activeResearchState.tema = '';
+        activeResearchState.topik = '';
+        renderAllDynamicFields();
+        showToast('Tema Penelitian dikosongkan', 'info');
+        return;
+      }
+      if (!activeResearchState.bidang) {
+        for (const [bName, bData] of Object.entries(researchTaxonomy.bidangFokus)) {
+          if (bData.temas[val]) {
+            activeResearchState.bidang = bName;
+            break;
+          }
+        }
+      }
+      activeResearchState.tema = val;
+      const availableTopiks = researchTaxonomy.bidangFokus[activeResearchState.bidang]?.temas[val] || [];
+      activeResearchState.topik = availableTopiks[0] || '';
+      renderAllDynamicFields();
+      showToast(`Tema: ${val}`);
+    },
+    () => activeResearchState.tema
+  );
+
+  // 3. Setup Topik Penelitian
+  setupCustomSelect('selectTopikPenelitian', 
+    () => {
+      if (activeResearchState.bidang && activeResearchState.tema) {
+        return researchTaxonomy.bidangFokus[activeResearchState.bidang]?.temas[activeResearchState.tema] || [];
+      }
+      const allTopiks = [];
+      Object.values(researchTaxonomy.bidangFokus).forEach(b => {
+        Object.values(b.temas).forEach(list => allTopiks.push(...list));
+      });
+      return allTopiks;
+    }, 
+    (val) => {
+      if (!val) {
+        activeResearchState.topik = '';
+        renderAllDynamicFields();
+        showToast('Topik Penelitian dikosongkan', 'info');
+        return;
+      }
+      if (!activeResearchState.tema) {
+        outer: for (const [bName, bData] of Object.entries(researchTaxonomy.bidangFokus)) {
+          for (const [tName, list] of Object.entries(bData.temas)) {
+            if (list.includes(val)) {
+              activeResearchState.bidang = bName;
+              activeResearchState.tema = tName;
+              break outer;
+            }
+          }
+        }
+      }
+      activeResearchState.topik = val;
+      renderAllDynamicFields();
+      showToast(`Topik: ${val}`);
+    },
+    () => activeResearchState.topik
+  );
+
+  // 4. Setup Rumpun Ilmu Level 1
+  setupCustomSelect('selectRumpun1', 
+    () => Object.keys(researchTaxonomy.rumpunIlmu), 
+    (val) => {
+      if (!val) {
+        activeResearchState.rumpun1 = '';
+        activeResearchState.rumpun2 = '';
+        activeResearchState.rumpun3 = '';
+        renderAllDynamicFields();
+        showToast('Rumpun Level 1 dikosongkan', 'info');
+        return;
+      }
+      activeResearchState.rumpun1 = val;
+      const availableL2 = Object.keys(researchTaxonomy.rumpunIlmu[val]?.level2 || {});
+      activeResearchState.rumpun2 = availableL2[0] || '';
+      const availableL3 = researchTaxonomy.rumpunIlmu[val]?.level2[activeResearchState.rumpun2] || [];
+      activeResearchState.rumpun3 = availableL3[0] || '';
+      renderAllDynamicFields();
+      showToast(`Rumpun Level 1: ${val}`);
+    },
+    () => activeResearchState.rumpun1
+  );
+
+  // 5. Setup Rumpun Ilmu Level 2
+  setupCustomSelect('selectRumpun2', 
+    () => {
+      if (activeResearchState.rumpun1 && researchTaxonomy.rumpunIlmu[activeResearchState.rumpun1]) {
+        return Object.keys(researchTaxonomy.rumpunIlmu[activeResearchState.rumpun1].level2 || {});
+      }
+      const allL2 = [];
+      Object.values(researchTaxonomy.rumpunIlmu).forEach(r => {
+        allL2.push(...Object.keys(r.level2 || {}));
+      });
+      return allL2;
+    }, 
+    (val) => {
+      if (!val) {
+        activeResearchState.rumpun2 = '';
+        activeResearchState.rumpun3 = '';
+        renderAllDynamicFields();
+        showToast('Rumpun Level 2 dikosongkan', 'info');
+        return;
+      }
+      if (!activeResearchState.rumpun1) {
+        for (const [rName, rData] of Object.entries(researchTaxonomy.rumpunIlmu)) {
+          if (rData.level2[val]) {
+            activeResearchState.rumpun1 = rName;
+            break;
+          }
+        }
+      }
+      activeResearchState.rumpun2 = val;
+      const availableL3 = researchTaxonomy.rumpunIlmu[activeResearchState.rumpun1]?.level2[val] || [];
+      activeResearchState.rumpun3 = availableL3[0] || '';
+      renderAllDynamicFields();
+      showToast(`Rumpun Level 2: ${val}`);
+    },
+    () => activeResearchState.rumpun2
+  );
+
+  // 6. Setup Rumpun Ilmu Level 3
+  setupCustomSelect('selectRumpun3', 
+    () => {
+      if (activeResearchState.rumpun1 && activeResearchState.rumpun2) {
+        return researchTaxonomy.rumpunIlmu[activeResearchState.rumpun1]?.level2[activeResearchState.rumpun2] || [];
+      }
+      const allL3 = [];
+      Object.values(researchTaxonomy.rumpunIlmu).forEach(r => {
+        Object.values(r.level2 || {}).forEach(list => allL3.push(...list));
+      });
+      return allL3;
+    }, 
+    (val) => {
+      if (!val) {
+        activeResearchState.rumpun3 = '';
+        renderAllDynamicFields();
+        showToast('Rumpun Level 3 dikosongkan', 'info');
+        return;
+      }
+      if (!activeResearchState.rumpun2) {
+        outerR: for (const [rName, rData] of Object.entries(researchTaxonomy.rumpunIlmu)) {
+          for (const [l2Name, list] of Object.entries(rData.level2 || {})) {
+            if (list.includes(val)) {
+              activeResearchState.rumpun1 = rName;
+              activeResearchState.rumpun2 = l2Name;
+              break outerR;
+            }
+          }
+        }
+      }
+      activeResearchState.rumpun3 = val;
+      renderAllDynamicFields();
+      showToast(`Rumpun Level 3: ${val}`);
+    },
+    () => activeResearchState.rumpun3
+  );
+
+  // 7. Setup Prioritas Riset
+  setupCustomSelect('selectPrioritasRiset', 
+    () => researchTaxonomy.prioritasRiset, 
+    (val) => {
+      if (!val) {
+        activeResearchState.prioritas = '';
+        renderAllDynamicFields();
+        showToast('Prioritas Riset dikosongkan', 'info');
+        return;
+      }
+      activeResearchState.prioritas = val;
+      renderAllDynamicFields();
+      showToast(`Prioritas Riset: ${val}`);
+    },
+    () => activeResearchState.prioritas
+  );
+
+  renderAllDynamicFields();
+}
+
+function setupCustomSelect(containerId, getOptionsFn, onSelectFn, getCurrentValFn) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const trigger = container.querySelector('.select-tag-trigger');
+  const dropdown = container.querySelector('.dynamic-options-dropdown');
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    // If clicked on remove tag button, clear it
+    if (e.target.classList.contains('remove-tag')) {
+      onSelectFn('');
+      return;
+    }
+
+    const wasOpen = dropdown.classList.contains('open');
+    closeAllTagDropdowns();
+
+    if (!wasOpen) {
+      const curVal = getCurrentValFn ? getCurrentValFn() : '';
+      populateDropdown(dropdown, getOptionsFn(), onSelectFn, curVal);
+      dropdown.classList.add('open');
+      trigger.classList.add('open');
+      container.classList.add('open');
+    }
+  });
+}
+
+function populateDropdown(dropdown, options, onSelectFn, currentValue = '') {
+  dropdown.innerHTML = '';
+  if (!options || options.length === 0) {
+    dropdown.innerHTML = '<div class="dynamic-option-item" style="color:#94a3b8; font-style:italic;">Tidak ada opsi tersedia</div>';
+    return;
+  }
+
+  options.forEach(opt => {
+    const item = document.createElement('div');
+    const isSelected = (opt === currentValue);
+    item.className = `dynamic-option-item ${isSelected ? 'selected' : ''}`;
+    item.innerHTML = `
+      <span>${opt}</span>
+      ${isSelected ? '<span style="color:#2563eb; font-weight:800; font-size: 0.85rem;">✓</span>' : ''}
+    `;
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      onSelectFn(opt);
+      closeAllTagDropdowns();
+    });
+    dropdown.appendChild(item);
+  });
+}
+
+function renderAllDynamicFields() {
+  updateFieldView('selectBidangFokus', activeResearchState.bidang, 'Pilih Bidang Fokus...');
+  updateFieldView('selectTemaPenelitian', activeResearchState.tema, 'Pilih Tema Penelitian...');
+  updateFieldView('selectTopikPenelitian', activeResearchState.topik, 'Pilih Topik Penelitian...');
+  updateFieldView('selectRumpun1', activeResearchState.rumpun1, 'Pilih Rumpun Level 1...');
+  updateFieldView('selectRumpun2', activeResearchState.rumpun2, 'Pilih Rumpun Level 2...');
+  updateFieldView('selectRumpun3', activeResearchState.rumpun3, 'Pilih Rumpun Level 3...');
+  updateFieldView('selectPrioritasRiset', activeResearchState.prioritas, 'Pilih Prioritas Riset...');
+}
+
+function updateFieldView(containerId, value, placeholder) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+
+  const tagHolder = container.querySelector('.tag-holder');
+  if (!tagHolder) return;
+
+  if (value && value.trim() !== '') {
+    tagHolder.innerHTML = `
+      <span class="tag-badge">
+        ${value}
+        <span class="remove-tag" title="Hapus kriteria">✕</span>
+      </span>
+    `;
+  } else {
+    tagHolder.innerHTML = `<span class="tag-placeholder">${placeholder}</span>`;
+  }
+}

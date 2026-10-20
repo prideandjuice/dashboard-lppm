@@ -1137,3 +1137,60 @@ body {
   color: #64748b;
   font-weight: 500;
 }
+
+/* =========================================
+   FORM CONTROLS - USULAN BARU (dari ok/css/style.css)
+   Discope ke .accordion-body agar tidak mengganggu modal dashboard
+========================================= */
+.accordion-body .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+  margin-bottom: 0;
+}
+
+.accordion-body .form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 0;
+}
+
+.accordion-body .form-control {
+  border: 1px solid #cbd5e1;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-family: inherit;
+  color: #1e293b;
+  background: #ffffff;
+  outline: none;
+  width: 100%;
+  min-height: 38px;
+  transition: border-color 0.15s;
+  cursor: pointer;
+}
+
+.accordion-body .form-control:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.15);
+}
+
+.period-date-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.84rem;
+}
+
+.period-date-box .open-text {
+  color: #16a34a;
+  font-weight: 800;
+}
+
+.period-date-box .close-text {
+  color: #ef4444;
+  font-weight: 800;
+}
