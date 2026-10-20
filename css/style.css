@@ -4,7 +4,7 @@
   --primary-blue: #1a56db;
   --primary-hover: #1e40af;
   --navy-dark: #0f172a;
-  --navy-header: #1e293b;
+  --navy-header: #0284c7;
   --bg-body: #f4f7fb;
   --card-bg: #ffffff;
   --text-main: #1e293b;
@@ -152,7 +152,7 @@ body {
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--primary-blue);
+  background:#ffffff ;
   border-radius: 3px 3px 0 0;
 }
 
@@ -668,7 +668,7 @@ body {
 }
 
 .panel-navy-header {
-  background: #1e293b;
+  background: #0284c7;
   color: #ffffff;
   padding: 0.75rem 1.2rem;
   display: flex;
@@ -935,7 +935,7 @@ body {
    PAGE: PENELITIAN.HTML (DAFTAR USULAN)
 ========================================= */
 .penelitian-header-banner {
-  background: linear-gradient(135deg, var(--umsu-blue-hero) 0%, #1742a7 65%, #0f2d77 100%);
+  background: #0284c7;
   border-radius: var(--radius-md);
   padding: 1.8rem 2.2rem;
   color: #ffffff;
@@ -945,6 +945,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  box-shadow: 0 4px 14px -2px rgba(2, 132, 199, 0.25);
 }
 
 .penelitian-header-left {

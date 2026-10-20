@@ -1,7 +1,7 @@
 // LPPM UMSU & RisetMu Dynamic Engine
 
 document.addEventListener('DOMContentLoaded', () => {
-  initDropdowns();
+  initLegacyDropdowns();
   initMonthlyChart();
   initTableFilters();
   initAccordions();
@@ -26,7 +26,7 @@ function showToast(message, type = 'success') {
 }
 
 // Dropdowns logic
-function initDropdowns() {
+function initLegacyDropdowns() {
   const yearBtn = document.getElementById('btnYearDropdown');
   const yearMenu = document.getElementById('menuYearDropdown');
   if (yearBtn && yearMenu) {
