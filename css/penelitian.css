@@ -1,3 +1,198 @@
+
+/* =========================================
+   TOP NAVBAR (LPPM UMSU BRANDING - USULAN BARU)
+========================================= */
+.top-navbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: 68px;
+}
+
+.nav-left-section {
+  display: flex;
+  align-items: center;
+  gap: 2.2rem;
+}
+
+.brand-lppm-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.brand-badge-u {
+  width: 38px;
+  height: 38px;
+  background: #1a56db;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 900;
+  box-shadow: 0 2px 6px rgba(26, 86, 219, 0.35);
+}
+
+.brand-text-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.brand-tagline {
+  font-size: 0.65rem;
+  color: #64748b;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 1px;
+}
+
+.main-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.main-nav-links .nav-item {
+  color: #475569;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 6px;
+  transition: all 0.15s;
+}
+
+.main-nav-links .nav-item:hover {
+  background: #f1f5f9;
+  color: #1a56db;
+}
+
+.main-nav-links .nav-item.active {
+  background: #eff6ff;
+  color: #1a56db;
+  font-weight: 700;
+}
+
+.nav-right-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dropdown-relative {
+  position: relative;
+}
+
+.control-pill-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 7px 14px;
+  border-radius: 20px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.control-pill-btn:hover {
+  background: #f8fafc;
+  border-color: #94a3b8;
+}
+
+.control-pill-btn svg {
+  width: 15px;
+  height: 15px;
+  fill: #64748b;
+}
+
+.icon-bell-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #475569;
+  transition: all 0.15s;
+}
+
+.icon-bell-btn:hover {
+  background: #f8fafc;
+  color: #1a56db;
+}
+
+.user-profile-widget {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 8px 4px 4px;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.user-profile-widget:hover {
+  background: #f1f5f9;
+}
+
+.avatar-circle-sm {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #1a56db;
+  color: #ffffff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-meta-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-meta-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #1e293b;
+  line-height: 1.1;
+}
+
+.user-meta-role {
+  font-size: 0.68rem;
+  color: #64748b;
+}
+
 /* ==========================================================================
    Modul Penelitian & Usulan Baru - LPPM UMSU & RisetMu
    Dibuat khusus untuk Branch: arya

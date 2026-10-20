@@ -1,83 +1,278 @@
-// LPPM UMSU & RisetMu Dynamic Engine
+/**
+ * RisetMu LPPM UMSU - Main Dashboard Application Logic
+ * Standardized single-source JS
+ */
 
 document.addEventListener('DOMContentLoaded', () => {
+  initChart();
+  initDropdowns();
   initLegacyDropdowns();
   initMonthlyChart();
-  initTableFilters();
-  initAccordions();
-  initStepper();
-  initDynamicResearchFields();
+  setupKeyboardShortcuts();
 });
 
-// Toast notification helper
-function showToast(message, type = 'success') {
-  let toast = document.getElementById('toastNotification');
-  if (!toast) {
-    toast = document.createElement('div');
-    toast.id = 'toastNotification';
-    toast.className = 'toast-popup';
-    document.body.appendChild(toast);
-  }
-  toast.className = `toast-popup show ${type}`;
-  toast.innerHTML = `<span>✓</span> <span>${message}</span>`;
-  setTimeout(() => {
-    toast.classList.remove('show');
-  }, 3200);
-}
+// Chart Instance reference
+let chartInstance = null;
 
-// Dropdowns logic
-function initLegacyDropdowns() {
-  const yearBtn = document.getElementById('btnYearDropdown');
-  const yearMenu = document.getElementById('menuYearDropdown');
-  if (yearBtn && yearMenu) {
-    yearBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      yearMenu.classList.toggle('show');
-    });
+// Initialize Chart.js with exact data from screenshot
+function initChart() {
+  const ctx = document.getElementById('penelitianChart');
+  if (!ctx) return;
 
-    yearMenu.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.getElementById('currentYearText').textContent = btn.dataset.year;
-        yearMenu.classList.remove('show');
-        showToast(`Tahun Akademik: ${btn.dataset.year}`);
-      });
-    });
-  }
+  const labels = [
+    '2012', '2013', '2014', '2015', '2016', 
+    '2017', '2018', '2019', '2020', '2021', 
+    '2022', '2023', '2024', '2025', '2026'
+  ];
 
-  const roleBtn = document.getElementById('btnRoleDropdown');
-  const roleMenu = document.getElementById('menuRoleDropdown');
-  if (roleBtn && roleMenu) {
-    roleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      roleMenu.classList.toggle('show');
-    });
+  const dataUsulan = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2];
+  const dataDidanai = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-    roleMenu.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const newRole = btn.dataset.role;
-        document.getElementById('currentRoleText').textContent = newRole;
-        roleMenu.classList.remove('show');
-        showToast(`Beralih peran ke: ${newRole}`);
-      });
-    });
-  }
-
-  const userBtn = document.getElementById('btnUserDropdown');
-  const userMenu = document.getElementById('menuUserDropdown');
-  if (userBtn && userMenu) {
-    userBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      userMenu.classList.toggle('show');
-    });
-  }
-
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.dropdown-menu-list').forEach(m => m.classList.remove('show'));
-    closeAllTagDropdowns();
+  chartInstance = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: 'Usulan',
+          data: dataUsulan,
+          borderColor: '#7c3aed',
+          backgroundColor: 'rgba(124, 58, 237, 0.08)',
+          borderWidth: 2.5,
+          tension: 0.35,
+          fill: false,
+          pointBackgroundColor: '#7c3aed',
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2,
+          pointRadius: 4.5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: '#6d28d9',
+          pointHoverBorderColor: '#ffffff',
+          pointHoverBorderWidth: 2.5
+        },
+        {
+          label: 'Didanai',
+          data: dataDidanai,
+          borderColor: '#e83e8c',
+          backgroundColor: 'rgba(232, 62, 140, 0.08)',
+          borderWidth: 2.5,
+          tension: 0.35,
+          fill: false,
+          pointBackgroundColor: '#e83e8c',
+          pointBorderColor: '#ffffff',
+          pointBorderWidth: 2,
+          pointRadius: 4.5,
+          pointHoverRadius: 7,
+          pointHoverBackgroundColor: '#d63384',
+          pointHoverBorderColor: '#ffffff',
+          pointHoverBorderWidth: 2.5
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: false
+        },
+        tooltip: {
+          backgroundColor: '#1e295f',
+          titleFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12, weight: '700' },
+          bodyFont: { family: "'Plus Jakarta Sans', sans-serif", size: 12 },
+          padding: 10,
+          cornerRadius: 8,
+          boxPadding: 4,
+          callbacks: {
+            label: function(context) {
+              return ' ' + context.dataset.label + ': ' + context.parsed.y + ' judul';
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: {
+            display: false,
+            drawBorder: false
+          },
+          ticks: {
+            font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
+            color: '#64748b'
+          }
+        },
+        y: {
+          min: 0,
+          max: 2,
+          ticks: {
+            stepSize: 1,
+            precision: 0,
+            font: { family: "'Plus Jakarta Sans', sans-serif", size: 11 },
+            color: '#64748b'
+          },
+          grid: {
+            color: '#f1f5f9',
+            drawBorder: false
+          }
+        }
+      },
+      interaction: {
+        mode: 'index',
+        intersect: false
+      }
+    }
   });
 }
 
-// Monthly Trend Canvas Chart
+// Toggle datasets visibility from legend pills
+function toggleDataset(index) {
+  if (!chartInstance) return;
+  const isVisible = chartInstance.isDatasetVisible(index);
+  chartInstance.setDatasetVisibility(index, !isVisible);
+  chartInstance.update();
+
+  const buttonId = index === 0 ? 'toggleUsulan' : 'toggleDidanai';
+  const btn = document.getElementById(buttonId);
+  if (btn) {
+    btn.style.opacity = isVisible ? '0.4' : '1';
+    btn.style.textDecoration = isVisible ? 'line-through' : 'none';
+  }
+}
+
+// Filter or highlight stats when clicking stat cards
+function filterChart(type) {
+  if (!chartInstance) return;
+  
+  if (type === 'penelitian') {
+    showToast('Fokus: Riwayat Penelitian (4 Usulan Didanai)');
+    chartInstance.data.datasets[0].data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 2];
+    chartInstance.data.datasets[1].data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    document.querySelector('.chart-title').textContent = 'Penelitian';
+    document.querySelector('.chart-subtitle').textContent = 'Data riwayat usulan yang sudah Diterima dan pengumuman periode sudah berlalu.';
+  } else if (type === 'pengabdian') {
+    showToast('Fokus: Riwayat Pengabdian kepada Masyarakat (4 Didanai)');
+    chartInstance.data.datasets[0].data = [0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0];
+    chartInstance.data.datasets[1].data = [0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0];
+    document.querySelector('.chart-title').textContent = 'Pengabdian kepada Masyarakat';
+    document.querySelector('.chart-subtitle').textContent = 'Data riwayat pengabdian yang telah selesai dan didanai RisetMu.';
+  } else if (type === 'artikel') {
+    showToast('Fokus: Pendampingan Artikel Ilmiah');
+    chartInstance.data.datasets[0].data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    chartInstance.data.datasets[1].data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    document.querySelector('.chart-title').textContent = 'Pendampingan Artikel';
+    document.querySelector('.chart-subtitle').textContent = 'Belum ada usulan pendampingan artikel pada periode ini.';
+  } else if (type === 'proposal') {
+    showToast('Fokus: Pendampingan Proposal');
+    chartInstance.data.datasets[0].data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    chartInstance.data.datasets[1].data = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    document.querySelector('.chart-title').textContent = 'Pendampingan Proposal';
+    document.querySelector('.chart-subtitle').textContent = 'Belum ada usulan pendampingan proposal pada periode ini.';
+  }
+  chartInstance.update();
+}
+
+// Dropdown Menus Controller
+function initDropdowns() {
+  const configs = [
+    { btn: 'yearDropdownBtn', menu: 'yearDropdownMenu' },
+    { btn: 'roleDropdownBtn', menu: 'roleDropdownMenu' },
+    { btn: 'notifBtn', menu: 'notifMenu' },
+    { btn: 'userProfileBtn', menu: 'userMenu' }
+  ];
+
+  configs.forEach(({ btn, menu }) => {
+    const buttonEl = document.getElementById(btn);
+    const menuEl = document.getElementById(menu);
+    if (!buttonEl || !menuEl) return;
+
+    buttonEl.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isShown = menuEl.classList.contains('show');
+      closeAllDropdowns();
+      if (!isShown) {
+        menuEl.classList.add('show');
+        buttonEl.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  // Handle Year selection
+  const yearItems = document.querySelectorAll('#yearDropdownMenu .dropdown-item');
+  yearItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      yearItems.forEach(i => {
+        i.classList.remove('active');
+        const checkIcon = i.querySelector('.fa-check');
+        if (checkIcon) checkIcon.remove();
+      });
+      item.classList.add('active');
+      const icon = document.createElement('i');
+      icon.className = 'fa-solid fa-check';
+      item.insertBefore(icon, item.firstChild);
+
+      const val = item.getAttribute('data-year');
+      document.getElementById('selectedYear').textContent = val;
+      closeAllDropdowns();
+      showToast('Periode aktif diubah ke ' + val, 'success');
+    });
+  });
+
+  // Handle Role selection
+  const roleItems = document.querySelectorAll('#roleDropdownMenu .dropdown-item');
+  roleItems.forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.stopPropagation();
+      roleItems.forEach(i => {
+        i.classList.remove('active');
+        const checkIcon = i.querySelector('.fa-check');
+        if (checkIcon) checkIcon.remove();
+      });
+      item.classList.add('active');
+      const icon = document.createElement('i');
+      icon.className = 'fa-solid fa-check';
+      item.insertBefore(icon, item.firstChild);
+
+      const val = item.getAttribute('data-role');
+      document.getElementById('selectedRole').textContent = val;
+      closeAllDropdowns();
+      showToast('Peran dialihkan ke: ' + val, 'success');
+    });
+  });
+
+  // Close menus on outside click
+  document.addEventListener('click', () => {
+    closeAllDropdowns();
+  });
+}
+
+// Backward-compatible dropdowns for usulan-baru.html
+function initLegacyDropdowns() {
+  const yearBtn = document.getElementById('btnYearDropdown');
+  const roleBtn = document.getElementById('btnRoleDropdown');
+  const userBtn = document.getElementById('btnUserDropdown');
+
+  if (yearBtn) {
+    yearBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showToast('Tahun Akademik: 2026/2027 (Aktif)');
+    });
+  }
+  if (roleBtn) {
+    roleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showToast('Peran Pengguna: DOSEN');
+    });
+  }
+  if (userBtn) {
+    userBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      openProfileModal();
+    });
+  }
+}
+
+// Monthly trend canvas chart (if element exists)
 function initMonthlyChart() {
   const canvas = document.getElementById('penelitianMonthlyChart');
   if (!canvas) return;
@@ -154,565 +349,177 @@ function initMonthlyChart() {
   draw();
 }
 
-// Table Filter on penelitian.html
-function initTableFilters() {
-  const tabs = document.querySelectorAll('.filter-tab-pill');
-  const rows = document.querySelectorAll('.proposal-data-row');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      const filter = tab.dataset.filter;
-      rows.forEach(row => {
-        if (filter === 'all' || row.dataset.status === filter) {
-          row.style.display = '';
-        } else {
-          row.style.display = 'none';
-        }
-      });
-      showToast(`Filter: ${tab.textContent}`);
-    });
+function closeAllDropdowns() {
+  document.querySelectorAll('.dropdown-menu').forEach(menu => {
+    menu.classList.remove('show');
+  });
+  document.querySelectorAll('.pill-btn, .icon-btn').forEach(btn => {
+    btn.setAttribute('aria-expanded', 'false');
   });
 }
 
-// Accordion Collapsible Logic
-function initAccordions() {
-  const headers = document.querySelectorAll('.accordion-header');
-  headers.forEach(header => {
-    header.addEventListener('click', () => {
-      const panel = header.closest('.accordion-panel');
-      panel.classList.toggle('collapsed');
-    });
-  });
-}
-
-// Stepper Progress
-function initStepper() {
-  const steps = document.querySelectorAll('.step-item');
-  steps.forEach((step, idx) => {
-    step.addEventListener('click', () => {
-      steps.forEach((s, i) => {
-        if (i < idx) {
-          s.classList.add('completed');
-          s.classList.remove('active');
-        } else if (i === idx) {
-          s.classList.add('active');
-          s.classList.remove('completed');
-        } else {
-          s.classList.remove('active', 'completed');
-        }
-      });
-      showToast(`Tahap: ${step.querySelector('.step-label').textContent}`);
-    });
-  });
-
-  const nextBtn = document.getElementById('btnNextWizard');
-  if (nextBtn) {
-    nextBtn.addEventListener('click', () => {
-      showToast('Data Identitas Usulan tersimpan. Beralih ke Substansi Usulan...', 'success');
-      const stepItems = document.querySelectorAll('.step-item');
-      if (stepItems.length >= 2) {
-        stepItems[0].classList.add('completed');
-        stepItems[0].classList.remove('active');
-        stepItems[1].classList.add('active');
-      }
-    });
+// Modal System
+function openModal(modalId) {
+  closeAllDropdowns();
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
   }
 }
 
-// =========================================================
-// DYNAMIC & EDITABLE RESEARCH TAXONOMY & SCHEME (RISETMU)
-// =========================================================
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) {
+    modal.classList.remove('show');
+    document.body.style.overflow = 'auto';
+  }
+}
 
-const researchTaxonomy = {
-  bidangFokus: {
-    "Teknologi Informasi dan Komunikasi": {
-      temas: {
-        "Pengembangan sistem berbasis kecerdasan buatan": [
-          "Pengembangan aplikasi sistem cerdas",
-          "Machine Learning untuk klasifikasi dan prediksi",
-          "Computer Vision untuk inspeksi dan analisis citra",
-          "Natural Language Processing untuk teks bahasa Indonesia"
-        ],
-        "Sistem cerdas Internet of Things (IoT)": [
-          "Monitoring sensor cerdas berbasis LoRa/WiFi",
-          "Smart Agriculture & Precision Farming System",
-          "Smart Campus and Energy Management System"
-        ],
-        "Keamanan Siber dan Cloud Computing": [
-          "Deteksi anomali jaringan berbasis deep learning",
-          "Enkripsi dan tata kelola privasi data rekam medis",
-          "Audit forensik digital pada infrastruktur cloud"
-        ],
-        "Sistem Informasi & Tata Kelola Digital": [
-          "Arsitektur Enterprise Sistem Informasi Kampus",
-          "Sistem Pendukung Keputusan Berbasis Big Data",
-          "Digitalisasi Layanan Publik Pemerintah Daerah"
-        ]
-      }
-    },
-    "Ketahanan Pangan dan Pertanian": {
-      temas: {
-        "Teknologi Pasca Panen Berkelanjutan": [
-          "Optimasi rantai pasok komoditas pangan lokal",
-          "Pengolahan pangan fungsional berbasis umbi-umbian",
-          "Pengawetan hasil panen ramah lingkungan"
-        ],
-        "Bioteknologi Tanaman Pangan & Hortikultura": [
-          "Rekayasa varietas padi tahan genangan dan kekeringan",
-          "Pupuk hayati mikoriza untuk lahan kritis",
-          "Pengendalian hama terpadu hayati"
-        ]
-      }
-    },
-    "Kesehatan, Farmasi dan Kedokteran": {
-      temas: {
-        "Pengembangan Obat Bahan Alam Tropis": [
-          "Standardisasi ekstrak herbal untuk antidiabetes",
-          "Isolasi senyawa aktif antibakteri dari flora lokal",
-          "Uji klinis fitofarmaka antiinflamasi"
-        ],
-        "Sistem Informasi Kesehatan Masyarakat": [
-          "Surveilans digital stunting dan gizi balita",
-          "Telemedicine terintegrasi untuk daerah 3T",
-          "Manajemen data rekam medis elektronik terpusat"
-        ]
-      }
-    },
-    "Sosial Humaniora & Pendidikan Berkemajuan": {
-      temas: {
-        "Inovasi Pembelajaran Digital": [
-          "Media augmented reality untuk pembelajaran sains",
-          "Model asesmen kurikulum merdeka berbasis AI",
-          "Pengembangan platform micro-learning adaptif"
-        ],
-        "Pemberdayaan Ekonomi Komunitas 'Aisyiyah": [
-          "Digital marketing dan inkubasi UMKM perempuan",
-          "Penguatan ketahanan keluarga sakinah dan literasi finansial",
-          "Model koperasi syariah berbasis komunitas ranting"
-        ]
-      }
-    },
-    "Energi Baru Terbarukan & Lingkungan": {
-      temas: {
-        "Pemanfaatan Energi Surya & Biomassa": [
-          "Sistem Pembangkit Listrik Tenaga Surya Atap Kampus",
-          "Konversi limbah kelapa sawit menjadi biofuel",
-          "Mikrohidro untuk penerangan pedesaan"
-        ],
-        "Pengelolaan Lingkungan & Kebencanaan": [
-          "Sistem peringatan dini banjir berbasis sensor IoT",
-          "Pengolahan air limbah industri ramah lingkungan",
-          "Mitigasi dampak perubahan iklim pada pesisir"
-        ]
-      }
-    }
+function handleBackdropClick(event, modalId) {
+  if (event.target.id === modalId) {
+    closeModal(modalId);
+  }
+}
+
+function openProfileModal() {
+  openModal('profileModal');
+}
+
+function saveProfile(e) {
+  e.preventDefault();
+  const name = document.getElementById('editName').value;
+  const dept = document.getElementById('editDept').value;
+  
+  const userNameEl = document.querySelector('.user-name');
+  if (userNameEl) userNameEl.textContent = name;
+  
+  const userDeptEl = document.querySelector('.user-role');
+  if (userDeptEl) userDeptEl.textContent = dept;
+
+  closeModal('profileModal');
+  showToast('Profil dosen berhasil diperbarui!', 'success');
+}
+
+// Mock Database Proposal Pengabdian
+const proposalDatabase = {
+  1: {
+    title: 'Pelatihan Literasi Digital dan Pemanfaatan Platform E-Commerce untuk UMKM di Lingkungan Aisyiyah Daerah Kota Medan',
+    skema: 'Program Kemitraan Masyarakat (PKM)',
+    tahun: '2024/2025',
+    ketua: 'Yoshida Sary, M.Kom.',
+    anggota: '1. Dr. Nurul Hidayah, M.Si.\n2. Muhammad Ihsan, M.Kom.',
+    mitra: 'Pimpinan Daerah Aisyiyah Kota Medan',
+    dana: 'Rp 20.000.000,- (Didanai RisetMu)',
+    status: 'Selesai (Laporan Akhir Terverifikasi)',
+    tahapan: 'Telah Selesai 100%'
   },
-  rumpunIlmu: {
-    "ILMU TEKNIK": {
-      level2: {
-        "TEKNIK ELEKTRO DAN INFORMATIKA": [
-          "Sistem Informasi",
-          "Teknik Informatika",
-          "Ilmu Komputer",
-          "Rekayasa Perangkat Lunak",
-          "Teknik Elektro",
-          "Teknik Telekomunikasi"
-        ],
-        "TEKNIK SIPIL DAN PERENCANAAN": [
-          "Teknik Sipil",
-          "Arsitektur",
-          "Perencanaan Wilayah dan Kota"
-        ],
-        "TEKNIK MESIN DAN INDUSTRI": [
-          "Teknik Mesin",
-          "Teknik Industri",
-          "Teknik Material"
-        ]
-      }
-    },
-    "ILMU KESEHATAN": {
-      level2: {
-        "KEDOKTERAN DAN KESEHATAN": [
-          "Pendidikan Dokter",
-          "Kesehatan Masyarakat",
-          "Ilmu Keperawatan",
-          "Farmasi Klinis",
-          "Kebidanan"
-        ]
-      }
-    },
-    "ILMU EKONOMI": {
-      level2: {
-        "EKONOMI, MANAJEMEN DAN BISNIS": [
-          "Manajemen",
-          "Akuntansi",
-          "Ekonomi Pembangunan",
-          "Ekonomi Islam / Syariah",
-          "Kewirausahaan"
-        ]
-      }
-    },
-    "ILMU PENDIDIKAN": {
-      level2: {
-        "PENDIDIKAN DAN KEGURUAN": [
-          "Pendidikan Guru Sekolah Dasar (PGSD)",
-          "Pendidikan Bahasa Indonesia",
-          "Pendidikan Matematika",
-          "Pendidikan Agama Islam (PAI)",
-          "Teknologi Pendidikan"
-        ]
-      }
-    },
-    "ILMU SOSIAL & HUMANIORA": {
-      level2: {
-        "ILMU SOSIAL DAN POLITIK": [
-          "Ilmu Komunikasi",
-          "Administrasi Publik",
-          "Hubungan Internasional",
-          "Kesejahteraan Sosial"
-        ],
-        "ILMU HUKUM": [
-          "Ilmu Hukum Perdata",
-          "Hukum Pidana",
-          "Hukum Tata Negara & Administrasi"
-        ]
-      }
-    }
-  },
-  prioritasRiset: [
-    "Digital Economy",
-    "Green Economy & Transisi Energi",
-    "Blue Economy & Kemaritiman",
-    "Kemandirian Kesehatan & Farmasi",
-    "Ketahanan Pangan Berkelanjutan",
-    "Pariwisata & Industri Kreatif",
-    "Penguatan Karakter, Moderasi & Kebangsaan"
-  ]
+  2: {
+    title: 'Pemberdayaan Ekonomi Perempuan Melalui Digital Marketing Pada Anggota Ranting Aisyiyah Cabang Helvetia (Tahap Lanjutan)',
+    skema: 'Program Kemitraan Masyarakat Lanjutan (PKM-L)',
+    tahun: '2025/2026',
+    ketua: 'Yoshida Sary, M.Kom.',
+    anggota: '1. Dr. Nurul Hidayah, M.Si.\n2. Muhammad Ihsan, M.Kom.',
+    mitra: 'Pimpinan Ranting Aisyiyah Cabang Helvetia',
+    dana: 'Rp 22.000.000,- (Didanai RisetMu)',
+    status: 'Selesai (Laporan Akhir Terverifikasi)',
+    tahapan: 'Telah Selesai 100%'
+  }
 };
 
-// Current active state
-let activeResearchState = {
-  bidang: "Teknologi Informasi dan Komunikasi",
-  tema: "Pengembangan sistem berbasis kecerdasan buatan",
-  topik: "Pengembangan aplikasi sistem cerdas",
-  rumpun1: "ILMU TEKNIK",
-  rumpun2: "TEKNIK ELEKTRO DAN INFORMATIKA",
-  rumpun3: "Sistem Informasi",
-  prioritas: "Digital Economy"
-};
+function openProposalDetailModal(id) {
+  const p = proposalDatabase[id];
+  if (!p) return;
 
-function closeAllTagDropdowns() {
-  document.querySelectorAll('.dynamic-options-dropdown').forEach(d => d.classList.remove('open'));
-  document.querySelectorAll('.select-tag-trigger').forEach(t => t.classList.remove('open'));
-  document.querySelectorAll('.dynamic-select-tag-box').forEach(b => b.classList.remove('open'));
-}
+  const titleEl = document.getElementById('modalProposalTitle');
+  if (titleEl) titleEl.textContent = 'Detail Usulan Pengabdian Masyarakat';
 
-function initDynamicResearchFields() {
-  // Global click listener to close dropdowns when clicking outside
-  document.addEventListener('click', closeAllTagDropdowns);
-
-  // Setup Skim Penelitian selector
-  const selectSkim = document.getElementById('selectSkimPenelitian');
-  if (selectSkim) {
-    selectSkim.addEventListener('change', (e) => {
-      showToast(`Skim terpilih: ${e.target.value} (Plafon hingga Rp 35.000.000)`);
-    });
+  const bodyEl = document.getElementById('modalProposalBody');
+  if (bodyEl) {
+    bodyEl.innerHTML = `
+      <table class="detail-table">
+        <tr>
+          <th>Judul Kegiatan</th>
+          <td><strong>${p.title}</strong></td>
+        </tr>
+        <tr>
+          <th>Skema Usulan</th>
+          <td><span class="status-pill-success">${p.skema}</span></td>
+        </tr>
+        <tr>
+          <th>Tahun Pelaksanaan</th>
+          <td>${p.tahun}</td>
+        </tr>
+        <tr>
+          <th>Ketua Pelaksana</th>
+          <td>${p.ketua}</td>
+        </tr>
+        <tr>
+          <th>Anggota Pelaksana</th>
+          <td style="white-space: pre-line;">${p.anggota}</td>
+        </tr>
+        <tr>
+          <th>Mitra Sasaran</th>
+          <td>${p.mitra}</td>
+        </tr>
+        <tr>
+          <th>Persetujuan Pendanaan</th>
+          <td><strong style="color: #059669;">${p.dana}</strong></td>
+        </tr>
+        <tr>
+          <th>Status Usulan</th>
+          <td><span class="status-pill-success"><i class="fa-solid fa-check"></i> ${p.status}</span></td>
+        </tr>
+        <tr>
+          <th>Tahapan Saat Ini</th>
+          <td>${p.tahapan}</td>
+        </tr>
+      </table>
+    `;
   }
 
-  // 1. Setup Bidang Fokus Penelitian
-  setupCustomSelect('selectBidangFokus', 
-    () => Object.keys(researchTaxonomy.bidangFokus), 
-    (val) => {
-      if (!val) {
-        activeResearchState.bidang = '';
-        activeResearchState.tema = '';
-        activeResearchState.topik = '';
-        renderAllDynamicFields();
-        showToast('Bidang Fokus dikosongkan', 'info');
-        return;
-      }
-      activeResearchState.bidang = val;
-      const availableTemas = Object.keys(researchTaxonomy.bidangFokus[val]?.temas || {});
-      activeResearchState.tema = availableTemas[0] || '';
-      const availableTopiks = researchTaxonomy.bidangFokus[val]?.temas[activeResearchState.tema] || [];
-      activeResearchState.topik = availableTopiks[0] || '';
-      renderAllDynamicFields();
-      showToast(`Bidang Fokus: ${val}`);
-    },
-    () => activeResearchState.bidang
-  );
-
-  // 2. Setup Tema Penelitian
-  setupCustomSelect('selectTemaPenelitian', 
-    () => {
-      if (activeResearchState.bidang && researchTaxonomy.bidangFokus[activeResearchState.bidang]) {
-        return Object.keys(researchTaxonomy.bidangFokus[activeResearchState.bidang].temas);
-      }
-      const allTemas = [];
-      Object.values(researchTaxonomy.bidangFokus).forEach(b => {
-        allTemas.push(...Object.keys(b.temas));
-      });
-      return allTemas;
-    }, 
-    (val) => {
-      if (!val) {
-        activeResearchState.tema = '';
-        activeResearchState.topik = '';
-        renderAllDynamicFields();
-        showToast('Tema Penelitian dikosongkan', 'info');
-        return;
-      }
-      if (!activeResearchState.bidang) {
-        for (const [bName, bData] of Object.entries(researchTaxonomy.bidangFokus)) {
-          if (bData.temas[val]) {
-            activeResearchState.bidang = bName;
-            break;
-          }
-        }
-      }
-      activeResearchState.tema = val;
-      const availableTopiks = researchTaxonomy.bidangFokus[activeResearchState.bidang]?.temas[val] || [];
-      activeResearchState.topik = availableTopiks[0] || '';
-      renderAllDynamicFields();
-      showToast(`Tema: ${val}`);
-    },
-    () => activeResearchState.tema
-  );
-
-  // 3. Setup Topik Penelitian
-  setupCustomSelect('selectTopikPenelitian', 
-    () => {
-      if (activeResearchState.bidang && activeResearchState.tema) {
-        return researchTaxonomy.bidangFokus[activeResearchState.bidang]?.temas[activeResearchState.tema] || [];
-      }
-      const allTopiks = [];
-      Object.values(researchTaxonomy.bidangFokus).forEach(b => {
-        Object.values(b.temas).forEach(list => allTopiks.push(...list));
-      });
-      return allTopiks;
-    }, 
-    (val) => {
-      if (!val) {
-        activeResearchState.topik = '';
-        renderAllDynamicFields();
-        showToast('Topik Penelitian dikosongkan', 'info');
-        return;
-      }
-      if (!activeResearchState.tema) {
-        outer: for (const [bName, bData] of Object.entries(researchTaxonomy.bidangFokus)) {
-          for (const [tName, list] of Object.entries(bData.temas)) {
-            if (list.includes(val)) {
-              activeResearchState.bidang = bName;
-              activeResearchState.tema = tName;
-              break outer;
-            }
-          }
-        }
-      }
-      activeResearchState.topik = val;
-      renderAllDynamicFields();
-      showToast(`Topik: ${val}`);
-    },
-    () => activeResearchState.topik
-  );
-
-  // 4. Setup Rumpun Ilmu Level 1
-  setupCustomSelect('selectRumpun1', 
-    () => Object.keys(researchTaxonomy.rumpunIlmu), 
-    (val) => {
-      if (!val) {
-        activeResearchState.rumpun1 = '';
-        activeResearchState.rumpun2 = '';
-        activeResearchState.rumpun3 = '';
-        renderAllDynamicFields();
-        showToast('Rumpun Level 1 dikosongkan', 'info');
-        return;
-      }
-      activeResearchState.rumpun1 = val;
-      const availableL2 = Object.keys(researchTaxonomy.rumpunIlmu[val]?.level2 || {});
-      activeResearchState.rumpun2 = availableL2[0] || '';
-      const availableL3 = researchTaxonomy.rumpunIlmu[val]?.level2[activeResearchState.rumpun2] || [];
-      activeResearchState.rumpun3 = availableL3[0] || '';
-      renderAllDynamicFields();
-      showToast(`Rumpun Level 1: ${val}`);
-    },
-    () => activeResearchState.rumpun1
-  );
-
-  // 5. Setup Rumpun Ilmu Level 2
-  setupCustomSelect('selectRumpun2', 
-    () => {
-      if (activeResearchState.rumpun1 && researchTaxonomy.rumpunIlmu[activeResearchState.rumpun1]) {
-        return Object.keys(researchTaxonomy.rumpunIlmu[activeResearchState.rumpun1].level2 || {});
-      }
-      const allL2 = [];
-      Object.values(researchTaxonomy.rumpunIlmu).forEach(r => {
-        allL2.push(...Object.keys(r.level2 || {}));
-      });
-      return allL2;
-    }, 
-    (val) => {
-      if (!val) {
-        activeResearchState.rumpun2 = '';
-        activeResearchState.rumpun3 = '';
-        renderAllDynamicFields();
-        showToast('Rumpun Level 2 dikosongkan', 'info');
-        return;
-      }
-      if (!activeResearchState.rumpun1) {
-        for (const [rName, rData] of Object.entries(researchTaxonomy.rumpunIlmu)) {
-          if (rData.level2[val]) {
-            activeResearchState.rumpun1 = rName;
-            break;
-          }
-        }
-      }
-      activeResearchState.rumpun2 = val;
-      const availableL3 = researchTaxonomy.rumpunIlmu[activeResearchState.rumpun1]?.level2[val] || [];
-      activeResearchState.rumpun3 = availableL3[0] || '';
-      renderAllDynamicFields();
-      showToast(`Rumpun Level 2: ${val}`);
-    },
-    () => activeResearchState.rumpun2
-  );
-
-  // 6. Setup Rumpun Ilmu Level 3
-  setupCustomSelect('selectRumpun3', 
-    () => {
-      if (activeResearchState.rumpun1 && activeResearchState.rumpun2) {
-        return researchTaxonomy.rumpunIlmu[activeResearchState.rumpun1]?.level2[activeResearchState.rumpun2] || [];
-      }
-      const allL3 = [];
-      Object.values(researchTaxonomy.rumpunIlmu).forEach(r => {
-        Object.values(r.level2 || {}).forEach(list => allL3.push(...list));
-      });
-      return allL3;
-    }, 
-    (val) => {
-      if (!val) {
-        activeResearchState.rumpun3 = '';
-        renderAllDynamicFields();
-        showToast('Rumpun Level 3 dikosongkan', 'info');
-        return;
-      }
-      if (!activeResearchState.rumpun2) {
-        outerR: for (const [rName, rData] of Object.entries(researchTaxonomy.rumpunIlmu)) {
-          for (const [l2Name, list] of Object.entries(rData.level2 || {})) {
-            if (list.includes(val)) {
-              activeResearchState.rumpun1 = rName;
-              activeResearchState.rumpun2 = l2Name;
-              break outerR;
-            }
-          }
-        }
-      }
-      activeResearchState.rumpun3 = val;
-      renderAllDynamicFields();
-      showToast(`Rumpun Level 3: ${val}`);
-    },
-    () => activeResearchState.rumpun3
-  );
-
-  // 7. Setup Prioritas Riset
-  setupCustomSelect('selectPrioritasRiset', 
-    () => researchTaxonomy.prioritasRiset, 
-    (val) => {
-      if (!val) {
-        activeResearchState.prioritas = '';
-        renderAllDynamicFields();
-        showToast('Prioritas Riset dikosongkan', 'info');
-        return;
-      }
-      activeResearchState.prioritas = val;
-      renderAllDynamicFields();
-      showToast(`Prioritas Riset: ${val}`);
-    },
-    () => activeResearchState.prioritas
-  );
-
-  renderAllDynamicFields();
+  openModal('proposalModal');
 }
 
-function setupCustomSelect(containerId, getOptionsFn, onSelectFn, getCurrentValFn) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
+// Toast Notifications System
+function showToast(message, type = 'info') {
+  let container = document.getElementById('toastContainer');
+  if (!container) {
+    container = document.createElement('div');
+    container.id = 'toastContainer';
+    container.className = 'toast-container';
+    document.body.appendChild(container);
+  }
 
-  const trigger = container.querySelector('.select-tag-trigger');
-  const dropdown = container.querySelector('.dynamic-options-dropdown');
+  const toast = document.createElement('div');
+  toast.className = 'toast ' + (type === 'success' ? 'toast-success' : '');
+  
+  const icon = type === 'success' ? 'fa-circle-check text-green' : 'fa-circle-info text-blue';
+  toast.innerHTML = `
+    <i class="fa-solid ${icon}"></i>
+    <span>${message}</span>
+  `;
 
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    // If clicked on remove tag button, clear it
-    if (e.target.classList.contains('remove-tag')) {
-      onSelectFn('');
-      return;
-    }
+  container.appendChild(toast);
 
-    const wasOpen = dropdown.classList.contains('open');
-    closeAllTagDropdowns();
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(10px)';
+    toast.style.transition = 'all 0.25s ease';
+    setTimeout(() => {
+      toast.remove();
+    }, 250);
+  }, 3200);
+}
 
-    if (!wasOpen) {
-      const curVal = getCurrentValFn ? getCurrentValFn() : '';
-      populateDropdown(dropdown, getOptionsFn(), onSelectFn, curVal);
-      dropdown.classList.add('open');
-      trigger.classList.add('open');
-      container.classList.add('open');
+// Keyboard shortcuts (e.g. Esc to close modal)
+function setupKeyboardShortcuts() {
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeModal('proposalModal');
+      closeModal('profileModal');
+      closeModal('usulanPenelitianModal');
+      closeAllDropdowns();
     }
   });
-}
-
-function populateDropdown(dropdown, options, onSelectFn, currentValue = '') {
-  dropdown.innerHTML = '';
-  if (!options || options.length === 0) {
-    dropdown.innerHTML = '<div class="dynamic-option-item" style="color:#94a3b8; font-style:italic;">Tidak ada opsi tersedia</div>';
-    return;
-  }
-
-  options.forEach(opt => {
-    const item = document.createElement('div');
-    const isSelected = (opt === currentValue);
-    item.className = `dynamic-option-item ${isSelected ? 'selected' : ''}`;
-    item.innerHTML = `
-      <span>${opt}</span>
-      ${isSelected ? '<span style="color:#2563eb; font-weight:800; font-size: 0.85rem;">✓</span>' : ''}
-    `;
-    item.addEventListener('click', (e) => {
-      e.stopPropagation();
-      onSelectFn(opt);
-      closeAllTagDropdowns();
-    });
-    dropdown.appendChild(item);
-  });
-}
-
-function renderAllDynamicFields() {
-  updateFieldView('selectBidangFokus', activeResearchState.bidang, 'Pilih Bidang Fokus...');
-  updateFieldView('selectTemaPenelitian', activeResearchState.tema, 'Pilih Tema Penelitian...');
-  updateFieldView('selectTopikPenelitian', activeResearchState.topik, 'Pilih Topik Penelitian...');
-  updateFieldView('selectRumpun1', activeResearchState.rumpun1, 'Pilih Rumpun Level 1...');
-  updateFieldView('selectRumpun2', activeResearchState.rumpun2, 'Pilih Rumpun Level 2...');
-  updateFieldView('selectRumpun3', activeResearchState.rumpun3, 'Pilih Rumpun Level 3...');
-  updateFieldView('selectPrioritasRiset', activeResearchState.prioritas, 'Pilih Prioritas Riset...');
-}
-
-function updateFieldView(containerId, value, placeholder) {
-  const container = document.getElementById(containerId);
-  if (!container) return;
-
-  const tagHolder = container.querySelector('.tag-holder');
-  if (!tagHolder) return;
-
-  if (value && value.trim() !== '') {
-    tagHolder.innerHTML = `
-      <span class="tag-badge">
-        ${value}
-        <span class="remove-tag" title="Hapus kriteria">✕</span>
-      </span>
-    `;
-  } else {
-    tagHolder.innerHTML = `<span class="tag-placeholder">${placeholder}</span>`;
-  }
 }
