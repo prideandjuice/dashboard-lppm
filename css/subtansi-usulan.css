@@ -1,0 +1,321 @@
+/* ==========================================================================
+   Modul Tahap 2: Substansi Usulan - LPPM UMSU & RisetMu
+   File: css/subtansi-usulan.css
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url('usulan-baru.css?v=6');
+
+:root {
+  --font-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Pastikan SEMUA komponen teks menggunakan font Plus Jakarta Sans */
+body,
+button,
+input,
+select,
+textarea,
+optgroup,
+option,
+table,
+th,
+td,
+h1, h2, h3, h4, h5, h6,
+p, span, a, label, div,
+small, strong, b, em {
+  font-family: var(--font-main);
+}
+
+/* Form Controls & Buttons Override untuk User Agent Defaults */
+button,
+input,
+select,
+textarea,
+.btn,
+.portal-select,
+.portal-input,
+.portal-file-input,
+.portal-file-input::file-selector-button {
+  font-family: var(--font-main) !important;
+}
+
+/* Proteksi glyph font Font Awesome agar icon tidak rusak */
+i[class*="fa-"],
+span[class*="fa-"],
+[class^="fa-"],
+.fa,
+.fa-solid,
+.fa-regular,
+.fa-brands {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+}
+.fa-regular {
+  font-weight: 400 !important;
+}
+.fa-solid {
+  font-weight: 900 !important;
+}
+
+/* Sticky Footer Layout */
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 1420px;
+  margin: 1.5rem auto 0 auto;
+  padding: 0 1.5rem 3rem 1.5rem;
+  flex: 1 0 auto;
+}
+
+.site-footer {
+  margin-top: auto !important;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   CUSTOM STYLES KHUSUS TAHAP 2: SUBSTANSI USULAN
+   ========================================================================== */
+.portal-form-container {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.25rem 1.6rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+}
+
+.portal-section {
+  margin-bottom: 1.15rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid #f8fafc;
+}
+
+.portal-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.portal-section-title {
+  color: #1e3a8a;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 0.65rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* File Upload Box */
+.portal-file-input {
+  width: 100%;
+  height: 36px;
+  padding: 4px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  color: #334155;
+  background-color: #ffffff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.portal-file-input::file-selector-button {
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  padding: 3px 12px;
+  border-radius: 3px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: #334155;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.15s ease;
+}
+
+.portal-file-input::file-selector-button:hover {
+  background: #e2e8f0;
+}
+
+/* Luaran Sub-title */
+.luaran-section-subtitle {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 10px 0 8px 0;
+}
+
+/* 2.3 Dual Buttons */
+.portal-btn-row-dual {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 0.75rem;
+}
+
+.btn-info-detail-rumusan {
+  background: #0ea5e9;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(14, 165, 233, 0.2);
+  transition: all 0.15s ease;
+}
+
+.btn-info-detail-rumusan:hover {
+  background: #0284c7;
+}
+
+/* Footer Actions Step 2 */
+.portal-footer-actions-step2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f1f5f9;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-left-btns,
+.footer-right-btns {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-portal-back {
+  background: #ffffff;
+  border: 1px solid #1e40af;
+  color: #1e40af;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-portal-back:hover {
+  background: #eff6ff;
+  color: #1e40af;
+  text-decoration: none;
+}
+
+.btn-portal-close {
+  background: #ffffff;
+  border: 1px solid #fca5a5;
+  color: #ef4444;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s ease;
+}
+
+.btn-portal-close:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+  color: #dc2626;
+  text-decoration: none;
+}
+
+.btn-portal-draft {
+  background: #0284c7;
+  color: #ffffff;
+  border: none;
+  padding: 7px 18px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(2, 132, 199, 0.25);
+}
+
+.btn-portal-draft:hover {
+  background: #0369a1;
+}
+
+.btn-portal-next-step2 {
+  background: #1e40af;
+  color: #ffffff;
+  border: none;
+  padding: 7px 22px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 3px rgba(30, 64, 175, 0.25);
+}
+
+.btn-portal-next-step2:hover {
+  background: #1d4ed8;
+}
+
+/* Stepper state: Step 1 completed, Step 2 active */
+.stepper-track-step2 .step-item[data-step="1"] .step-bubble {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #10b981;
+}
+
+.stepper-track-step2 .step-item[data-step="1"] .step-sub {
+  color: #10b981;
+}
+
+.stepper-track-step2 .step-item[data-step="1"] .step-label {
+  color: #0f172a;
+}
+
+.stepper-track-step2 .step-item[data-step="2"] .step-bubble {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  color: #ffffff;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.22), 0 4px 10px rgba(37, 99, 235, 0.25);
+}
+
+.stepper-track-step2 .step-item[data-step="2"] .step-sub {
+  color: #2563eb;
+}
+
+.stepper-track-step2 .step-item[data-step="2"] .step-label {
+  color: #0f172a;
+  font-weight: 800;
+}

@@ -37,102 +37,99 @@
         </div>
       </a>
 
-          <!-- Right Action Items -->
-          <div class="header-actions">
-            <!-- Academic Year Dropdown -->
-            <div class="dropdown-wrapper">
-              <button class="pill-btn nav-dropdown-btn" id="yearDropdownBtn" aria-expanded="false"
-                title="Pilih Periode">
-                <i class="fa-regular fa-calendar-days"></i>
-                <span id="selectedYear">2026/2027</span>
-                <i class="fa-solid fa-chevron-down arrow-icon"></i>
-              </button>
-              <div class="dropdown-menu" id="yearDropdownMenu">
-                <div class="dropdown-item active" data-year="2026/2027"><i class="fa-solid fa-check"></i> 2026/2027
-                  (Aktif)
-                </div>
-                <div class="dropdown-item" data-year="2025/2026">2025/2026</div>
-                <div class="dropdown-item" data-year="2024/2025">2024/2025</div>
-                <div class="dropdown-item" data-year="2023/2024">2023/2024</div>
-              </div>
+      <!-- Right Action Items -->
+      <div class="header-actions">
+        <!-- Academic Year Dropdown -->
+        <div class="dropdown-wrapper">
+          <button class="pill-btn nav-dropdown-btn" id="yearDropdownBtn" aria-expanded="false" title="Pilih Periode">
+            <i class="fa-regular fa-calendar-days"></i>
+            <span id="selectedYear">2026/2027</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu" id="yearDropdownMenu">
+            <div class="dropdown-item active" data-year="2026/2027"><i class="fa-solid fa-check"></i> 2026/2027
+              (Aktif)
             </div>
+            <div class="dropdown-item" data-year="2025/2026">2025/2026</div>
+            <div class="dropdown-item" data-year="2024/2025">2024/2025</div>
+            <div class="dropdown-item" data-year="2023/2024">2023/2024</div>
+          </div>
+        </div>
 
-            <!-- Role Dropdown -->
-            <div class="dropdown-wrapper">
-              <button class="pill-btn nav-dropdown-btn" id="roleDropdownBtn" aria-expanded="false" title="Ganti Peran">
-                <i class="fa-regular fa-user"></i>
-                <span id="selectedRole">DOSEN</span>
-                <i class="fa-solid fa-chevron-down arrow-icon"></i>
-              </button>
-              <div class="dropdown-menu" id="roleDropdownMenu">
-                <div class="dropdown-item active" data-role="DOSEN"><i class="fa-solid fa-check"></i> DOSEN</div>
-                <div class="dropdown-item" data-role="REVIEWER">REVIEWER</div>
-                <div class="dropdown-item" data-role="PENGUSUL">PENGUSUL</div>
-                <div class="dropdown-item" data-role="ADMIN LPPM">ADMIN LPPM</div>
-              </div>
+        <!-- Role Dropdown -->
+        <div class="dropdown-wrapper">
+          <button class="pill-btn nav-dropdown-btn" id="roleDropdownBtn" aria-expanded="false" title="Ganti Peran">
+            <i class="fa-regular fa-user"></i>
+            <span id="selectedRole">DOSEN</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu" id="roleDropdownMenu">
+            <div class="dropdown-item active" data-role="DOSEN"><i class="fa-solid fa-check"></i> DOSEN</div>
+            <div class="dropdown-item" data-role="REVIEWER">REVIEWER</div>
+            <div class="dropdown-item" data-role="PENGUSUL">PENGUSUL</div>
+            <div class="dropdown-item" data-role="ADMIN LPPM">ADMIN LPPM</div>
+          </div>
+        </div>
+
+        <!-- Notification Bell -->
+        <div class="dropdown-wrapper">
+          <button class="icon-btn notif-btn" id="notifBtn" title="Notifikasi">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-badge-dot"></span>
+          </button>
+          <div class="dropdown-menu notif-menu" id="notifMenu">
+            <div class="notif-header">
+              <span>Pemberitahuan</span>
+              <span class="notif-tag">2 Baru</span>
             </div>
-
-            <!-- Notification Bell -->
-            <div class="dropdown-wrapper">
-              <button class="icon-btn notif-btn" id="notifBtn" title="Notifikasi">
-                <i class="fa-regular fa-bell"></i>
-                <span class="notif-badge-dot"></span>
-              </button>
-              <div class="dropdown-menu notif-menu" id="notifMenu">
-                <div class="notif-header">
-                  <span>Pemberitahuan</span>
-                  <span class="notif-tag">2 Baru</span>
-                </div>
-                <div class="notif-list">
-                  <div class="notif-item unread">
-                    <div class="notif-icon bg-blue"><i class="fa-solid fa-bullhorn"></i></div>
-                    <div class="notif-text">
-                      <strong>Pengumuman Pendanaan 2026</strong>
-                      <p>Administrasi pendanaan proposal penelitian dan PKM telah resmi diumumkan.</p>
-                      <small>Hari ini, 08:30 WIB</small>
-                    </div>
-                  </div>
-                  <div class="notif-item unread">
-                    <div class="notif-icon bg-green"><i class="fa-solid fa-circle-check"></i></div>
-                    <div class="notif-text">
-                      <strong>Proposal Diterima</strong>
-                      <p>Pengabdian Kemitraan Masyarakat Ranting Aisyiyah telah disetujui.</p>
-                      <small>Kemarin, 14:15 WIB</small>
-                    </div>
-                  </div>
+            <div class="notif-list">
+              <div class="notif-item unread">
+                <div class="notif-icon bg-blue"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="notif-text">
+                  <strong>Pengumuman Pendanaan 2026</strong>
+                  <p>Administrasi pendanaan proposal penelitian dan PKM telah resmi diumumkan.</p>
+                  <small>Hari ini, 08:30 WIB</small>
                 </div>
               </div>
-            </div>
-
-            <!-- User Profile Pill -->
-            <div class="dropdown-wrapper">
-              <button class="user-profile-btn" id="userProfileBtn" aria-expanded="false">
-                <div class="user-avatar-circle">
-                  <i class="fa-solid fa-user"></i>
+              <div class="notif-item unread">
+                <div class="notif-icon bg-green"><i class="fa-solid fa-circle-check"></i></div>
+                <div class="notif-text">
+                  <strong>Proposal Diterima</strong>
+                  <p>Pengabdian Kemitraan Masyarakat Ranting Aisyiyah telah disetujui.</p>
+                  <small>Kemarin, 14:15 WIB</small>
                 </div>
-                <span class="user-name">YOSHIDA SARY</span>
-                <i class="fa-solid fa-chevron-down arrow-icon"></i>
-              </button>
-              <div class="dropdown-menu user-menu" id="userMenu">
-                <div class="user-menu-header">
-                  <strong>Yoshida Sary, M.Kom.</strong>
-                  <small>NIDN: 0123456789</small>
-                </div>
-                <div class="dropdown-divider"></div>
-                <a href="#profil" class="dropdown-item" onclick="openProfileModal()"><i
-                    class="fa-regular fa-id-card"></i>
-                  Profil Lengkap</a>
-                <a href="#" class="dropdown-item" onclick="showToast('Fitur Pengaturan Akun')"><i
-                    class="fa-solid fa-sliders"></i> Pengaturan Akun</a>
-                <a href="#" class="dropdown-item" onclick="showToast('Fitur Ganti Sandi')"><i
-                    class="fa-solid fa-key"></i>
-                  Ganti Password</a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item text-danger" onclick="showToast('Sesi tetap aktif')"><i
-                    class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</a>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- User Profile Pill -->
+        <div class="dropdown-wrapper">
+          <button class="user-profile-btn" id="userProfileBtn" aria-expanded="false">
+            <div class="user-avatar-circle">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <span class="user-name">YOSHIDA SARY</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu user-menu" id="userMenu">
+            <div class="user-menu-header">
+              <strong>Yoshida Sary, M.Kom.</strong>
+              <small>NIDN: 0123456789</small>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="#profil" class="dropdown-item" onclick="openProfileModal()"><i class="fa-regular fa-id-card"></i>
+              Profil Lengkap</a>
+            <a href="#" class="dropdown-item" onclick="showToast('Fitur Pengaturan Akun')"><i
+                class="fa-solid fa-sliders"></i> Pengaturan Akun</a>
+            <a href="#" class="dropdown-item" onclick="showToast('Fitur Ganti Sandi')"><i class="fa-solid fa-key"></i>
+              Ganti Password</a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item text-danger" onclick="showToast('Sesi tetap aktif')"><i
+                class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</a>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -154,7 +151,6 @@
           </a>
           <ul class="sub-dropdown">
             <li><a href="penelitian.html">Usulan Baru</a></li>
-            <li><a href="penelitian.html">Riwayat Usulan Penelitian</a></li>
             <li><a href="#" onclick="showToast('Menu Laporan Kemajuan')">Laporan Kemajuan</a></li>
             <li><a href="#" onclick="showToast('Menu Laporan Akhir')">Laporan Akhir</a></li>
           </ul>
@@ -354,14 +350,16 @@
 
         <!-- PROFIL SAYA CARD -->
         <div class="profile-card">
-          <div class="panel-header">
-            <h3 class="panel-title">Profil Saya</h3>
+          <div class="panel-header profile-header">
+            <div class="panel-title-wrapper">
+              <h3 class="panel-title">Profil Saya</h3>
+            </div>
             <div class="panel-actions">
               <button class="panel-btn-icon" id="editProfileBtn" onclick="openProfileModal()" title="Edit Profil">
                 <i class="fa-solid fa-pen"></i>
               </button>
               <button class="panel-btn-pill" id="syncBtn" onclick="syncData()"
-                title="Sinkronkan dengan Sinta / PDDikti">
+                title="Sinkronkan dengan SINTA & PDDikti">
                 <i class="fa-solid fa-rotate sync-icon"></i>
                 <span>Sync</span>
               </button>
@@ -375,28 +373,57 @@
                 <i class="fa-solid fa-user"></i>
               </div>
               <div class="profile-text">
-                <h4 class="lecturer-name">Yoshida Sary</h4>
-                <p class="lecturer-dept">Sistem Informasi</p>
-                <p class="lecturer-univ">Universitas Muhammadiyah Sumatera Utara</p>
+                <div class="lecturer-name-row">
+                  <h4 class="lecturer-name" id="cardLecturerName">Yoshida Sary</h4>
+                  <span class="verified-badge" title="Akun Terverifikasi SINTA & PDDikti">
+                    <i class="fa-solid fa-circle-check"></i>
+                  </span>
+                </div>
+                <div class="lecturer-dept" id="cardLecturerDept">
+                  <i class="fa-solid fa-laptop-code"></i> Sistem Informasi
+                </div>
+                <p class="lecturer-univ" id="cardLecturerUniv" title="Universitas Muhammadiyah Sumatera Utara">
+                  <i class="fa-solid fa-building-columns"></i> Univ. Muhammadiyah Sumatera Utara
+                </p>
               </div>
             </div>
 
-            <!-- 3 Stat Metrics Columns -->
-            <div class="profile-metrics-row">
-              <div class="metric-col">
-                <span class="metric-label">Sinta Score overall</span>
+            <!-- 3 Stat Metrics Mini-Cards -->
+            <div class="profile-metrics-grid">
+              <div class="metric-card metric-sinta" title="SINTA Score Overall">
+                <div class="metric-card-top">
+                  <i class="fa-solid fa-chart-line metric-icon"></i>
+                  <span class="metric-label">Sinta</span>
+                </div>
                 <span class="metric-value" id="sintaScore">599</span>
+                <span class="metric-sub">Overall</span>
               </div>
-              <div class="metric-divider"></div>
-              <div class="metric-col">
-                <span class="metric-label">Jenjang Pendidikan</span>
-                <span class="metric-value">S2</span>
+
+              <div class="metric-card metric-edu" title="Jenjang Pendidikan Tertinggi">
+                <div class="metric-card-top">
+                  <i class="fa-solid fa-graduation-cap metric-icon"></i>
+                  <span class="metric-label">Pendidikan</span>
+                </div>
+                <span class="metric-value" id="lecturerDegree">S2</span>
+                <span class="metric-sub">Magister</span>
               </div>
-              <div class="metric-divider"></div>
-              <div class="metric-col">
-                <span class="metric-label">Jabatan Akademik</span>
-                <span class="metric-value">Lektor</span>
+
+              <div class="metric-card metric-rank" title="Jabatan Fungsional Akademik">
+                <div class="metric-card-top">
+                  <i class="fa-solid fa-award metric-icon"></i>
+                  <span class="metric-label">Jabatan</span>
+                </div>
+                <span class="metric-value" id="lecturerRank">Lektor</span>
+                <span class="metric-sub">Fungsional</span>
               </div>
+            </div>
+
+            <!-- Compact Footer / Quick Links -->
+            <div class="profile-card-footer">
+              <a href="https://sinta.kemdikbud.go.id" target="_blank" rel="noopener noreferrer" class="profile-ext-link" title="Buka Profil di Portal SINTA">
+                <span>Portal SINTA</span>
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              </a>
             </div>
           </div>
         </div>
@@ -417,7 +444,8 @@
                 <i class="fa-regular fa-file-lines"></i>
               </div>
               <div class="history-item-body">
-                <h5 class="history-item-title" title="Pengembangan Sistem Informasi Desa Digital">Pengembangan Sistem Informasi Desa Digital</h5>
+                <h5 class="history-item-title" title="Pengembangan Sistem Informasi Desa Digital">Pengembangan Sistem
+                  Informasi Desa Digital</h5>
                 <div class="history-item-meta">
                   <span class="history-item-scheme">Penelitian - Reguler 2026</span>
                   <span class="badge-status-pill review">Sedang Review</span>
@@ -431,7 +459,8 @@
                 <i class="fa-solid fa-user-group"></i>
               </div>
               <div class="history-item-body">
-                <h5 class="history-item-title" title="Pemberdayaan UMKM melalui Digital Marketing">Pemberdayaan UMKM melalui Digital Marketing</h5>
+                <h5 class="history-item-title" title="Pemberdayaan UMKM melalui Digital Marketing">Pemberdayaan UMKM
+                  melalui Digital Marketing</h5>
                 <div class="history-item-meta">
                   <span class="history-item-scheme">Pengabdian - Kemitraan 2026</span>
                   <span class="badge-status-pill funded">Didanai</span>
@@ -445,7 +474,8 @@
                 <i class="fa-regular fa-file"></i>
               </div>
               <div class="history-item-body">
-                <h5 class="history-item-title" title="Model Prediksi Harga Padi Menggunakan ML">Model Prediksi Harga Padi Menggunakan ML</h5>
+                <h5 class="history-item-title" title="Model Prediksi Harga Padi Menggunakan ML">Model Prediksi Harga
+                  Padi Menggunakan ML</h5>
                 <div class="history-item-meta">
                   <span class="history-item-scheme">Penelitian - Internal 2025</span>
                   <span class="badge-status-pill done">Selesai</span>
@@ -459,7 +489,8 @@
         <div class="sidebar-panel-card">
           <div class="panel-navy-header">
             <h3>Pengumuman Terbaru</h3>
-            <a href="javascript:void(0)" class="panel-header-link" onclick="showToast('Membuka seluruh arsip pengumuman')">
+            <a href="javascript:void(0)" class="panel-header-link"
+              onclick="showToast('Membuka seluruh arsip pengumuman')">
               <i class="fa-solid fa-arrow-right"></i>
             </a>
           </div>
@@ -484,7 +515,8 @@
             </div>
 
             <!-- News 3 -->
-            <div class="announcement-item" onclick="showToast('Link Pendaftaran Webinar Strategi Publikasi Internasional')">
+            <div class="announcement-item"
+              onclick="showToast('Link Pendaftaran Webinar Strategi Publikasi Internasional')">
               <div class="announcement-icon"><i class="fa-solid fa-video"></i></div>
               <div>
                 <h5 class="announcement-title">Webinar: Strategi Publikasi di Jurnal Internasional</h5>
@@ -713,14 +745,14 @@
           <div class="form-row">
             <div class="form-group">
               <label>Jenjang Pendidikan</label>
-              <select class="form-input">
+              <select class="form-input" id="editDegree">
                 <option value="S2" selected>S2 (Magister)</option>
                 <option value="S3">S3 (Doktor)</option>
               </select>
             </div>
             <div class="form-group">
               <label>Jabatan Akademik (Fungsional)</label>
-              <select class="form-input">
+              <select class="form-input" id="editRank">
                 <option value="Lektor" selected>Lektor</option>
                 <option value="Lektor Kepala">Lektor Kepala</option>
                 <option value="Guru Besar">Guru Besar (Profesor)</option>

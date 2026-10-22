@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tahap 2: Substansi Usulan - LPPM UMSU &amp; RisetMu</title>
+  <meta name="description" content="Tahap 2 Substansi Usulan Penelitian RisetMu LPPM UMSU">
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=14">
+  <link rel="stylesheet" href="css/subtansi-usulan.css?v=3">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎓</text></svg>">
+</head>
+<body>
+
+  <!-- TOP HEADER / NAVBAR -->
+  <header class="top-header">
+    <div class="header-container">
+      <!-- Logo LPPM -->
+      <a href="index.html" class="brand-logo" id="brand-logo" title="LPPM Home">
+        <div class="brand-name">
+          <span class="logo-riset">L<span class="logo-bulb-i">P</span>P</span><span class="logo-mu">M</span>
+        </div>
+      </a>
+
+      <!-- Right Action Items -->
+      <div class="header-actions">
+        <!-- Academic Year Dropdown -->
+        <div class="dropdown-wrapper">
+          <button class="pill-btn nav-dropdown-btn" id="yearDropdownBtn" aria-expanded="false" title="Pilih Periode">
+            <i class="fa-regular fa-calendar-days"></i>
+            <span id="selectedYear">2026/2027</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu" id="yearDropdownMenu">
+            <div class="dropdown-item active" data-year="2026/2027"><i class="fa-solid fa-check"></i> 2026/2027 (Aktif)</div>
+            <div class="dropdown-item" data-year="2025/2026">2025/2026</div>
+            <div class="dropdown-item" data-year="2024/2025">2024/2025</div>
+            <div class="dropdown-item" data-year="2023/2024">2023/2024</div>
+          </div>
+        </div>
+
+        <!-- Role Dropdown -->
+        <div class="dropdown-wrapper">
+          <button class="pill-btn nav-dropdown-btn" id="roleDropdownBtn" aria-expanded="false" title="Ganti Peran">
+            <i class="fa-regular fa-user"></i>
+            <span id="selectedRole">DOSEN</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu" id="roleDropdownMenu">
+            <div class="dropdown-item active" data-role="DOSEN"><i class="fa-solid fa-check"></i> DOSEN</div>
+            <div class="dropdown-item" data-role="REVIEWER">REVIEWER</div>
+            <div class="dropdown-item" data-role="PENGUSUL">PENGUSUL</div>
+            <div class="dropdown-item" data-role="ADMIN LPPM">ADMIN LPPM</div>
+          </div>
+        </div>
+
+        <!-- Notification Bell -->
+        <div class="dropdown-wrapper">
+          <button class="icon-btn notif-btn" id="notifBtn" title="Notifikasi">
+            <i class="fa-regular fa-bell"></i>
+            <span class="notif-badge-dot"></span>
+          </button>
+          <div class="dropdown-menu notif-menu" id="notifMenu">
+            <div class="notif-header">
+              <span>Pemberitahuan</span>
+              <span class="notif-tag">2 Baru</span>
+            </div>
+            <div class="notif-list">
+              <div class="notif-item unread">
+                <div class="notif-icon bg-blue"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="notif-text">
+                  <strong>Pengumuman Pendanaan 2026</strong>
+                  <p>Administrasi pendanaan proposal penelitian telah resmi diumumkan.</p>
+                  <small>Hari ini, 08:30 WIB</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Profile Pill -->
+        <div class="dropdown-wrapper">
+          <button class="user-profile-btn" id="userProfileBtn" aria-expanded="false">
+            <div class="user-avatar-circle">
+              <i class="fa-solid fa-user"></i>
+            </div>
+            <span class="user-name">YOSHIDA SARY</span>
+            <i class="fa-solid fa-chevron-down arrow-icon"></i>
+          </button>
+          <div class="dropdown-menu user-menu" id="userMenu">
+            <div class="user-menu-header">
+              <strong>Yoshida Sary, M.Kom.</strong>
+              <small>NIDN: 0123456789</small>
+            </div>
+            <div class="dropdown-divider"></div>
+            <a href="index.html#profil" class="dropdown-item"><i class="fa-regular fa-id-card"></i> Profil Lengkap</a>
+            <div class="dropdown-divider"></div>
+            <a href="javascript:void(0)" class="dropdown-item text-danger" onclick="showToast('Sesi tetap aktif')"><i class="fa-solid fa-arrow-right-from-bracket"></i> Keluar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- SUB NAVIGATION MENU -->
+  <nav class="sub-nav">
+    <div class="sub-nav-container">
+      <ul class="nav-links">
+        <li class="nav-item">
+          <a href="index.html" class="nav-link" id="navDashboard">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item has-dropdown active">
+          <a href="penelitian.html" class="nav-link">
+            <i class="fa-solid fa-flask"></i>
+            <span>Penelitian</span>
+            <i class="fa-solid fa-chevron-down sub-arrow"></i>
+          </a>
+          <ul class="sub-dropdown">
+            <li><a href="penelitian.html">Usulan Baru</a></li>
+            <li><a href="#" onclick="showToast('Menu Laporan Kemajuan')">Laporan Kemajuan</a></li>
+            <li><a href="#" onclick="showToast('Menu Laporan Akhir')">Laporan Akhir</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-hand-holding-heart"></i>
+            <span>Pengabdian</span>
+            <i class="fa-solid fa-chevron-down sub-arrow"></i>
+          </a>
+          <ul class="sub-dropdown">
+            <li><a href="#" onclick="showToast('Menu Usulan Baru Pengabdian')">Usulan Baru Pengabdian</a></li>
+            <li><a href="#" onclick="showToast('Menu Riwayat Pengabdian')">Riwayat Usulan Pengabdian</a></li>
+          </ul>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#" class="nav-link">
+            <i class="fa-regular fa-file-lines"></i>
+            <span>Pendampingan</span>
+            <i class="fa-solid fa-chevron-down sub-arrow"></i>
+          </a>
+        </li>
+        <li class="nav-item has-dropdown">
+          <a href="#" class="nav-link">
+            <i class="fa-solid fa-user-check"></i>
+            <span>Pengajuan Reviewer</span>
+            <i class="fa-solid fa-chevron-down sub-arrow"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTAINER -->
+  <main class="app-container">
+
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumb-nav" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+        <li class="breadcrumb-item">
+          <a href="index.html" class="breadcrumb-link">
+            <i class="fa-solid fa-house"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="breadcrumb-separator">
+          <i class="fa-solid fa-chevron-right"></i>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="penelitian.html" class="breadcrumb-link">
+            <i class="fa-solid fa-flask"></i>
+            <span>Penelitian</span>
+          </a>
+        </li>
+        <li class="breadcrumb-separator">
+          <i class="fa-solid fa-chevron-right"></i>
+        </li>
+        <li class="breadcrumb-item">
+          <a href="usulan-baru.html" class="breadcrumb-link">
+            <span>Usulan Baru</span>
+          </a>
+        </li>
+        <li class="breadcrumb-separator">
+          <i class="fa-solid fa-chevron-right"></i>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          <span>Tahap 2: Substansi Usulan</span>
+        </li>
+      </ol>
+    </nav>
+
+    <!-- INFO BANNER (TAHAP 2) -->
+    <div class="info-notification-bar">
+      <div class="info-bar-left">
+        <div class="info-icon-badge">
+          <i class="fa-solid fa-circle-info"></i>
+        </div>
+        <div class="info-text-group">
+          <span class="info-badge-tag">PANDUAN PENGAJUAN</span>
+          <h4 class="info-title-text">Substansi Usulan Penelitian - Tahap 2</h4>
+        </div>
+      </div>
+      <div class="info-bar-right">
+        <div class="info-periode-pill">
+          <i class="fa-regular fa-calendar-check"></i>
+          <span>Tahun Pelaksanaan <strong>2026/2027</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEPPER 5 TAHAPAN RISETMU (STEP 2 ACTIVE) -->
+    <div class="stepper-progress-container">
+      <div class="stepper-track stepper-track-step2">
+        <div class="step-item completed" data-step="1">
+          <div class="step-bubble">
+            <i class="fa-solid fa-check" style="font-size: 0.85rem;"></i>
+          </div>
+          <div class="step-meta">
+            <span class="step-sub">Tahap 1</span>
+            <span class="step-label">Identitas Usulan</span>
+          </div>
+        </div>
+        <div class="step-item active" data-step="2">
+          <div class="step-bubble">
+            <span class="step-num">2</span>
+          </div>
+          <div class="step-meta">
+            <span class="step-sub">Tahap 2</span>
+            <span class="step-label">Substansi Usulan</span>
+          </div>
+        </div>
+        <div class="step-item" data-step="3">
+          <div class="step-bubble">
+            <span class="step-num">3</span>
+          </div>
+          <div class="step-meta">
+            <span class="step-sub">Tahap 3</span>
+            <span class="step-label">RAB</span>
+          </div>
+        </div>
+        <div class="step-item" data-step="4">
+          <div class="step-bubble">
+            <span class="step-num">4</span>
+          </div>
+          <div class="step-meta">
+            <span class="step-sub">Tahap 4</span>
+            <span class="step-label">Dokumen Pendukung</span>
+          </div>
+        </div>
+        <div class="step-item" data-step="5">
+          <div class="step-bubble">
+            <span class="step-num">5</span>
+          </div>
+          <div class="step-meta">
+            <span class="step-sub">Tahap 5</span>
+            <span class="step-label">Kirim Usulan</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FORMULIR TAHAP 2: SUBSTANSI USULAN (SESUAI FOTO RESMI) -->
+    <div class="portal-form-container">
+      
+      <!-- 2.1 SUBSTANSI USULAN -->
+      <div class="portal-section">
+        <h4 class="portal-section-title">2.1 Substansi Usulan</h4>
+        <div class="portal-grid-2col">
+          
+          <div class="form-group">
+            <label class="portal-label">Kelompok Makro Riset <span class="required-star">*</span></label>
+            <select class="portal-select" id="selectMakroRiset">
+              <option value="">Pilih Makro Riset</option>
+              <option value="Riset Dasar" selected>Riset Dasar</option>
+              <option value="Riset Terapan">Riset Terapan</option>
+              <option value="Riset Pengembangan">Riset Pengembangan</option>
+              <option value="Komersialisasi / Hilirisasi">Komersialisasi / Hilirisasi</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="portal-label">
+              Unggah Substansi Usulan <span class="required-star">*</span>
+              <i class="fa-solid fa-circle-question tooltip-icon" title="Unggah berkas proposal substansi sesuai format PDF resmi (maks. 5MB)"></i>
+            </label>
+            <div class="file-upload-box">
+              <input type="file" id="fileSubstansi" class="portal-file-input" accept=".pdf,.doc,.docx" onchange="handleFileSubstansi(this)">
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 2.2 LUARAN TARGET CAPAIAN -->
+      <div class="portal-section">
+        <h4 class="portal-section-title">2.2 Luaran Target Capaian</h4>
+        
+        <div class="portal-btn-row">
+          <button type="button" class="btn-portal-add" onclick="showModalTambahLuaran()">
+            <i class="fa-solid fa-plus"></i>
+            <span>Tambah Luaran</span>
+          </button>
+        </div>
+
+        <div class="luaran-section-subtitle">Luaran Wajib</div>
+
+        <div class="portal-table-wrapper">
+          <table class="portal-table" id="tabelLuaranWajib">
+            <thead>
+              <tr>
+                <th style="width: 160px; text-align: center;">Urutan Tahun Kegiatan</th>
+                <th style="width: 220px;">Kategori Luaran</th>
+                <th>Luaran</th>
+                <th style="width: 130px; text-align: center;">Status</th>
+                <th style="width: 160px;">
+                  Keterangan
+                  <i class="fa-solid fa-circle-question tooltip-icon" title="Keterangan luaran wajib penelitian"></i>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="text-align: center;">Tahun ke-1</td>
+                <td>Publikasi Ilmiah Jurnal Internasional</td>
+                <td style="font-weight: 600;">Artikel pada jurnal internasional bereputasi (terindeks Scopus/WoS)</td>
+                <td style="text-align: center;">
+                  <span class="badge-portal-status status-menyetujui">Accepted/Published</span>
+                </td>
+                <td>Target Wajib Tahun 1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 2.3 8 BIDANG STRATEGIS -->
+      <div class="portal-section">
+        <h4 class="portal-section-title">2.3 8 Bidang Strategis</h4>
+        
+        <div class="portal-btn-row-dual">
+          <button type="button" class="btn-info-detail-rumusan" onclick="showModalInfoRumusanMasalah()">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Informasi Detail Rumusan Masalah</span>
+          </button>
+          <button type="button" class="btn-portal-add" onclick="showModalTambahBidangStrategis()">
+            <i class="fa-solid fa-plus"></i>
+            <span>Tambah</span>
+          </button>
+        </div>
+
+        <div class="portal-table-wrapper">
+          <table class="portal-table" id="tabelBidangStrategis">
+            <thead>
+              <tr>
+                <th style="width: 45px; text-align: center;">No</th>
+                <th style="width: 200px;">8 Bidang Strategis</th>
+                <th>Rumusan Masalah</th>
+                <th>Uraian Kegiatan</th>
+                <th style="width: 60px; text-align: center;">Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td colspan="5" class="portal-table-empty">
+                  Data tidak tersedia!
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- FOOTER ACTIONS TAHAP 2 (PERSIS SESUAI FOTO RESMI) -->
+      <div class="portal-footer-actions-step2">
+        <div class="footer-left-btns">
+          <a href="usulan-baru.html" class="btn-portal-back">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span>Kembali</span>
+          </a>
+          <a href="penelitian.html" class="btn-portal-close" onclick="return confirm('Tutup formulir usulan?')">
+            <span>Tutup form</span>
+          </a>
+        </div>
+        <div class="footer-right-btns">
+          <button type="button" class="btn-portal-draft" onclick="simpanDrafTahap2()">
+            <span>Simpan Sebagai Draft</span>
+            <i class="fa-regular fa-floppy-disk"></i>
+          </button>
+          <button type="button" class="btn-portal-next-step2" onclick="lanjutTahap3()">
+            <span>Selanjutnya</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div>&copy; 2026 LPPM UMSU. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="javascript:void(0)">Kebijakan Privasi</a>
+      <span>|</span>
+      <a href="javascript:void(0)">Syarat Penggunaan</a>
+      <span>|</span>
+      <a href="javascript:void(0)">Kontak</a>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/subtansi-usulan.js?v=1"></script>
+</body>
+</html>

@@ -924,8 +924,7 @@ body {
   gap: 22px;
 }
 
-/* Generic Panel Header & Box */
-.profile-card,
+/* Generic History Card */
 .history-card {
   background-color: var(--bg-white);
   border-radius: 12px;
@@ -933,6 +932,23 @@ body {
   box-shadow: var(--shadow-card);
 }
 
+/* ==========================================================================
+   PROFIL SAYA CARD - Modern Minimalist & Compact
+   ========================================================================== */
+.profile-card {
+  background-color: var(--bg-white);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  border: 1px solid #e2e8f0;
+  transition: box-shadow var(--transition-normal);
+}
+
+.profile-card:hover {
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.09), 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+/* Header with subtle elegant gradient */
 .panel-header {
   background-color: var(--primary-navy);
   color: #ffffff;
@@ -942,10 +958,33 @@ body {
   justify-content: space-between;
 }
 
-.panel-title {
+.panel-header.profile-header {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 60%, #075985 100%);
+  color: #ffffff;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.panel-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.panel-header-icon {
   font-size: 15px;
+  color: #bae6fd;
+}
+
+.panel-title {
+  font-size: 14.5px;
   font-weight: 700;
   letter-spacing: -0.01em;
+  color: #ffffff;
+  margin: 0;
 }
 
 .panel-actions {
@@ -957,28 +996,31 @@ body {
 .panel-btn-icon {
   width: 28px;
   height: 28px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(4px);
   color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 12px;
   cursor: pointer;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .panel-btn-icon:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
 }
 
 .panel-btn-pill {
   height: 28px;
-  padding: 0 12px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
+  padding: 0 11px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(4px);
   color: #ffffff;
   font-family: var(--font-main);
   font-size: 12px;
@@ -987,22 +1029,22 @@ body {
   align-items: center;
   gap: 6px;
   cursor: pointer;
-  transition: background var(--transition-fast);
+  transition: all var(--transition-fast);
 }
 
 .panel-btn-pill:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.28);
+  transform: translateY(-1px);
 }
 
 .sync-icon.rotating {
-  animation: spin 1s linear infinite;
+  animation: spin 0.8s linear infinite;
 }
 
 @keyframes spin {
   from {
     transform: rotate(0deg);
   }
-
   to {
     transform: rotate(360deg);
   }
@@ -1010,89 +1052,291 @@ body {
 
 /* Profile Body */
 .panel-body.profile-body {
-  padding: 20px;
+  padding: 15px 16px 14px;
 }
 
+/* User Info Top Row */
 .profile-meta {
   display: flex;
   align-items: center;
-  gap: 16px;
-  margin-bottom: 22px;
+  gap: 13px;
+  margin-bottom: 13px;
 }
 
-.profile-avatar-large {
-  width: 58px;
-  height: 58px;
-  border-radius: 50%;
-  background-color: #cbd5e1;
-  color: #64748b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 26px;
+.profile-avatar-wrapper {
+  position: relative;
   flex-shrink: 0;
 }
 
-.lecturer-name {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text-main);
-  line-height: 1.25;
-}
-
-.lecturer-dept {
-  font-size: 12.5px;
-  color: #475569;
-  font-weight: 500;
-  margin-top: 2px;
-}
-
-.lecturer-univ {
-  font-size: 12px;
-  color: #64748b;
-  margin-top: 1px;
-}
-
-/* 3 Metrics Row */
-.profile-metrics-row {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  border-top: 1px solid var(--border-light);
-  padding-top: 16px;
-}
-
-.metric-col {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 4px;
-}
-
-.metric-label {
-  font-size: 11px;
-  font-weight: 600;
-  color: #334155;
-  margin-bottom: 4px;
-  min-height: 28px;
+.profile-avatar-large {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
+  color: #0284c7;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 22px;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #e0f2fe, 0 4px 10px rgba(2, 132, 199, 0.16);
+  transition: transform var(--transition-normal);
 }
 
-.metric-value {
-  font-size: 20px;
+.profile-avatar-wrapper:hover .profile-avatar-large {
+  transform: scale(1.04);
+}
+
+.avatar-status-badge {
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  background-color: #10b981;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8.5px;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.profile-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.lecturer-name-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 2px;
+}
+
+.lecturer-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.verified-badge {
+  color: #0284c7;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.lecturer-dept {
+  font-size: 12px;
+  font-weight: 600;
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lecturer-dept i {
+  font-size: 11px;
+  opacity: 0.85;
+}
+
+.lecturer-univ {
+  font-size: 11.5px;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.lecturer-univ i {
+  font-size: 11px;
+  color: #94a3b8;
+}
+
+/* 3 Stat Metrics Mini-Cards */
+.profile-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 7px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.metric-card {
+  padding: 8px 4px 7px;
+  border-radius: 9px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  cursor: default;
+}
+
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.05);
+}
+
+.metric-card-top {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 2px;
+}
+
+.metric-card-top .metric-icon {
+  font-size: 10px;
+}
+
+.metric-card-top .metric-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.metric-card .metric-value {
+  font-size: 16px;
   font-weight: 800;
-  color: var(--accent-blue);
-  line-height: 1.2;
+  line-height: 1.15;
+  margin-bottom: 1px;
+  transition: color var(--transition-fast);
 }
 
-.metric-divider {
-  width: 1px;
-  background-color: var(--border-light);
-  margin: 4px 0;
+.metric-card .metric-sub {
+  font-size: 9.5px;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+/* Color variations for the 3 mini-cards */
+.metric-card.metric-sinta {
+  background: #f0f9ff;
+  border-color: #e0f2fe;
+}
+.metric-card.metric-sinta .metric-icon,
+.metric-card.metric-sinta .metric-label {
+  color: #0369a1;
+}
+.metric-card.metric-sinta .metric-value {
+  color: #0284c7;
+}
+.metric-card.metric-sinta .metric-sub {
+  color: #0284c7;
+}
+.metric-card.metric-sinta:hover {
+  border-color: #bae6fd;
+  background: #e0f2fe;
+}
+
+.metric-card.metric-edu {
+  background: #f5f3ff;
+  border-color: #ede9fe;
+}
+.metric-card.metric-edu .metric-icon,
+.metric-card.metric-edu .metric-label {
+  color: #6d28d9;
+}
+.metric-card.metric-edu .metric-value {
+  color: #7c3aed;
+}
+.metric-card.metric-edu .metric-sub {
+  color: #7c3aed;
+}
+.metric-card.metric-edu:hover {
+  border-color: #ddd6fe;
+  background: #ede9fe;
+}
+
+.metric-card.metric-rank {
+  background: #ecfdf5;
+  border-color: #d1fae5;
+}
+.metric-card.metric-rank .metric-icon,
+.metric-card.metric-rank .metric-label {
+  color: #047857;
+}
+.metric-card.metric-rank .metric-value {
+  color: #059669;
+  font-size: 13.5px;
+}
+.metric-card.metric-rank .metric-sub {
+  color: #059669;
+}
+.metric-card.metric-rank:hover {
+  border-color: #a7f3d0;
+  background: #d1fae5;
+}
+
+/* Compact Footer / SINTA ID & Quick Link */
+.profile-card-footer {
+  margin-top: 11px;
+  padding-top: 9px;
+  border-top: 1px dashed #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+}
+
+.profile-sinta-tag {
+  color: #64748b;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.profile-sinta-tag i {
+  color: #0284c7;
+  font-size: 11px;
+}
+
+.profile-sinta-tag strong {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.profile-ext-link {
+  color: #0284c7;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 5px;
+  background-color: #f0f9ff;
+  border: 1px solid #e0f2fe;
+  transition: all var(--transition-fast);
+}
+
+.profile-ext-link:hover {
+  background-color: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+.profile-ext-link i {
+  font-size: 9px;
 }
 
 /* Riwayat Usulan Body */

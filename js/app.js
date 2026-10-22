@@ -388,17 +388,88 @@ function openProfileModal() {
 
 function saveProfile(e) {
   e.preventDefault();
-  const name = document.getElementById('editName').value;
-  const dept = document.getElementById('editDept').value;
+  const name = document.getElementById('editName')?.value || 'Yoshida Sary';
+  const dept = document.getElementById('editDept')?.value || 'Sistem Informasi';
+  const univ = document.getElementById('editUniv')?.value || 'Universitas Muhammadiyah Sumatera Utara';
+  const sinta = document.getElementById('editSinta')?.value || '599';
+  const degree = document.getElementById('editDegree')?.value || 'S2';
+  const rank = document.getElementById('editRank')?.value || 'Lektor';
   
+  // Update Header / Navbar User
   const userNameEl = document.querySelector('.user-name');
   if (userNameEl) userNameEl.textContent = name;
   
   const userDeptEl = document.querySelector('.user-role');
   if (userDeptEl) userDeptEl.textContent = dept;
 
+  // Update Profile Card
+  const cardName = document.getElementById('cardLecturerName');
+  if (cardName) cardName.textContent = name;
+
+  const cardDept = document.getElementById('cardLecturerDept');
+  if (cardDept) cardDept.innerHTML = `<i class="fa-solid fa-laptop-code"></i> ${dept}`;
+
+  const cardUniv = document.getElementById('cardLecturerUniv');
+  if (cardUniv) {
+    cardUniv.innerHTML = `<i class="fa-solid fa-building-columns"></i> ${univ}`;
+    cardUniv.title = univ;
+  }
+
+  const sintaScoreEl = document.getElementById('sintaScore');
+  if (sintaScoreEl) sintaScoreEl.textContent = sinta;
+
+  const degreeEl = document.getElementById('lecturerDegree');
+  if (degreeEl) degreeEl.textContent = degree;
+
+  const rankEl = document.getElementById('lecturerRank');
+  if (rankEl) rankEl.textContent = rank;
+
   closeModal('profileModal');
   showToast('Profil dosen berhasil diperbarui!', 'success');
+}
+
+/**
+ * Sinkronisasi Data SINTA & PDDikti Kemdikbudristek
+ */
+function syncData() {
+  const syncBtn = document.getElementById('syncBtn');
+  const syncIcon = syncBtn ? syncBtn.querySelector('.sync-icon') : null;
+
+  if (syncBtn && syncBtn.disabled) return;
+
+  if (syncIcon) syncIcon.classList.add('rotating');
+  if (syncBtn) {
+    syncBtn.disabled = true;
+    syncBtn.style.opacity = '0.75';
+    syncBtn.style.cursor = 'wait';
+  }
+
+  showToast('Menghubungkan ke SINTA & PDDikti...', 'info');
+
+  setTimeout(() => {
+    if (syncIcon) syncIcon.classList.remove('rotating');
+    if (syncBtn) {
+      syncBtn.disabled = false;
+      syncBtn.style.opacity = '';
+      syncBtn.style.cursor = '';
+    }
+
+    const sintaEl = document.getElementById('sintaScore');
+    if (sintaEl) {
+      const prev = parseInt(sintaEl.textContent) || 599;
+      const updated = prev + 13;
+      sintaEl.textContent = updated;
+      sintaEl.style.transition = 'all 0.3s ease';
+      sintaEl.style.color = '#10b981';
+      sintaEl.style.transform = 'scale(1.15)';
+      setTimeout(() => {
+        sintaEl.style.color = '';
+        sintaEl.style.transform = '';
+      }, 1200);
+    }
+
+    showToast('Sinkronisasi SINTA & PDDikti selesai! Data terbarui.', 'success');
+  }, 1200);
 }
 
 // Mock Database Proposal Pengabdian
